@@ -1,4 +1,7 @@
-# ProjectManagement
- A J@EE project.
- <br>
-With Homan<big>(main)</big> & Temper
+# Project Management Platform
+
+A J@EE project.
+
+Crafted with dove by Homan & Temper.
+
+Dec 2020.
