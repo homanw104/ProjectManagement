@@ -1,7 +1,19 @@
 # Project Management Platform
 
-A J@EE project.
+A J@EE project using **Spring Boot** and **Semantic UI**.
 
-Crafted with dove by Homan & Temper.
 
-Dec 2020.
+
+## Semantic UI
+
+Reference: <https://semantic-ui.com/introduction/build-tools.html>
+
+To build Semantic UI run `gulp build` under `/semantic`.
+
+
+
+## Licence
+
+Crafted with DOVE by Homan & Temper.
+
+Dec 2020
