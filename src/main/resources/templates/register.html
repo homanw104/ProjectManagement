@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- Standard Meta -->
@@ -28,11 +28,16 @@
                 </div>
             </h1>
 
-            <form class="ui large form">
+            <form th:action="@{/register}" th:object="${user}" method="post" class="ui large form">
                 <div class="ui stacked segment">
                     <div class="field">
                         <div class="ui input">
-                            <input type="text" name="username" placeholder="用户名">
+                            <input type="text" name="uid" placeholder="学工号">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui input">
+                            <input type="text" name="name" placeholder="姓名">
                         </div>
                     </div>
                     <div class="field">
@@ -45,7 +50,7 @@
                             <input type="password" name="password-repeat" placeholder="重复密码">
                         </div>
                     </div>
-                    <div class="ui fluid large red submit button">注册</div>
+                    <input type="submit" value="注册" class="ui fluid large red submit button"/>
                 </div>
                 <div class="ui error message"></div>
             </form>
