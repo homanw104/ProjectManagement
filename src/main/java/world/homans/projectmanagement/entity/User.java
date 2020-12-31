@@ -23,16 +23,16 @@ public class User implements Serializable {
     private long uid = -1;
 
     /**
-     * 0 - Not activated, 1 - Activated
+     * ACTIVATED, DEACTIVATED
      */
     @Column
-    private int status = 1;
+    private Status status = Status.ACTIVATED;
 
     /**
-     * 0 - Admin, 1 - Student, 2 - Tutor, 3 - Assessor
+     * ADMIN, STUDENT, TUTOR, ASSESSOR
      */
     @Column
-    private int role = 1;
+    private Role role = Role.STUDENT;
 
     /**
      * User name

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <!-- Standard Meta -->
@@ -19,7 +19,25 @@
 </head>
 
 <body>
-
+    <h1 class="ui red h1">Temporary Welcome Page</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>用户名</th>
+            <th>密码</th>
+        </tr>
+        </thead>
+        <tbody>
+<!--        <tr th:each="s:${students}">-->
+<!--            <td th:text="${s.id}">username</td>-->
+<!--            <td th:text="${s.name}">password</td>-->
+<!--        </tr>-->
+            <tr>
+                <td th:text="${username}">null</td>
+                <td th:text="${password}">null</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 
 </html>

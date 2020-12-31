@@ -1,6 +1,6 @@
 # Project Management Platform
 
-A J@EE project using **Spring Boot** and **Semantic UI**.
+A J@EE project using **Spring Boot**, **Thymeleaf** and **Semantic UI**.
 
 
 
@@ -16,4 +16,4 @@ To build Semantic UI run `gulp build` under `/semantic`.
 
 Crafted with DOVE by Homan & Temper.
 
-Dec 2020
+*Dec 2020*
