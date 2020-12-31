@@ -2,18 +2,57 @@
 <html lang="en">
 
 <head>
+    <!-- Standard Meta -->
     <meta charset="UTF-8">
-    <title>Login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Site Properties -->
+    <title>双创项目管理 - 登录</title>
     <link rel="stylesheet" type="text/css" href="dist/semantic.min.css">
-    <script src="dist/semantic.min.js"></script>
     <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="dist/semantic.min.js"></script>
+
+    <!-- Site Specified Style and Script -->
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <script src="js/login.js"></script>
 </head>
 
 <body>
-    <main>
-        <button class="ui button">登录</button>
-        <button class="ui button">注册</button>
-    </main>
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+
+            <h1 class="ui red header">
+                <div class="content">
+                    双创项目管理
+                </div>
+            </h1>
+
+            <form class="ui large form">
+                <div class="ui stacked segment">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="username" placeholder="用户名">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="password" placeholder="密码">
+                        </div>
+                    </div>
+                    <div class="ui fluid large red submit button">登录</div>
+                </div>
+                <div class="ui error message"></div>
+            </form>
+
+            <div class="ui message">
+                什么，第一次来吗？(。・∀・)ノ <a href="register">注册</a>！
+            </div>
+
+        </div>
+    </div>
 </body>
 
 </html>

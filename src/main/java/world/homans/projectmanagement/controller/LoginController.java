@@ -10,6 +10,6 @@ public class LoginController {
     @RequestMapping("/login")
     public String hello(Model model) {
         model.addAttribute("name", "Homan");
-        return "login";
+        return "login";     // Refer to `src/main/resources/templates/login.html`
     }
 }
