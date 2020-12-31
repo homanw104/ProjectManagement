@@ -1,8 +1,6 @@
 package world.homans.projectmanagement.entity;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,8 +8,6 @@ import java.util.Date;
 
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "user")
 public class User implements Serializable {
 
@@ -19,7 +15,7 @@ public class User implements Serializable {
      * User ID
      */
     @Id
-    @GeneratedValue
+    // @GeneratedValue // TODO 自定义用户ID生成规则
     private long uid = -1;
 
     /**
