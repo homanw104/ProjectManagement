@@ -20,7 +20,7 @@ public class IndexController {
      * 主界面显示
      * @param uid 读取的用户端储存的 uid ，默认值 -1
      * @param model 与界面绑定的对象集合
-     * @return 如 cookie 不存在或失效则重定向至 login ，否则返回 index 页面
+     * @return 如 cookie 不存在或失效则重定向至 login ，否则根据 user.getRole() 返回对应主页面
      */
     @GetMapping("")
     public String index(@CookieValue(value = "uid", defaultValue = "-1") Long uid, Model model) {
@@ -29,7 +29,13 @@ public class IndexController {
             return "redirect:/login";
         } else {
             model.addAttribute("user", user);
-            return "index-student";
+            switch (user.getRole()) {
+                case ADMIN: return "index-admin";
+                case STUDENT: return "index-student";
+                case TUTOR: return "index-tutor";
+                case ASSESSOR: return "index-assessor";
+                default: return "redirect:/login";
+            }
         }
     }
 }
