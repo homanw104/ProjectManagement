@@ -29,7 +29,7 @@ public class IndexController {
             return "redirect:/login";
         } else {
             model.addAttribute("user", user);
-            return "index";
+            return "index-student";
         }
     }
 }

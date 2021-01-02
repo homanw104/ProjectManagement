@@ -14,15 +14,27 @@
     <script src="dist/semantic.min.js"></script>
 
     <!-- Site Specified Style and Script -->
-    <!--<link rel="stylesheet" type="text/css" href="css/xxx.css">-->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <!--<script src="js/xxx.js"></script>-->
 </head>
 
 <body>
-    <h1 class="ui red h1">Temporary Welcome Page</h1>
-    <p th:text="'uid: ' + ${user.uid}">uid: null</p>
-    <p th:text="'name: ' + ${user.name}">name: null</p>
-    <p th:text="'password: ' + ${user.password}">password: null</p>
+    <div th:replace="common::common_header"></div>
+
+    <div class="ui main container">
+        <div class="ui grid">
+            <div class="ui four wide column">
+                <div th:replace="common::common_menu(0)"></div>
+            </div>
+            <div class="ui twelve wide column">
+                <p>学生界面</p>
+                <div class="ui placeholder segment"></div>
+                <div class="ui placeholder segment"></div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="common::common_footer"></div>
 </body>
 
 </html>
