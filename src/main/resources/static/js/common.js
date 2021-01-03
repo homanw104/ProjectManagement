@@ -22,15 +22,19 @@ $(document)
             on: 'hover'
         });
 
-        // File upload button
-        $('#file-url-button').click(function () {
-            $("#file-url").click();
+        // File upload button (application.html)
+        $('#file-button').click(function () {
+            $("#file").click();
         });
 
-        // Show file name
-        $("#file-url").change(function () {
-            let files = $("#file-url").get(0).files;
+        // Show file name (application.html)
+        $("#file").change(function () {
+            let files = $("#file").get(0).files;
             $("#file-name").val(files[0].name);
         });
+
+        // Dropdown UI (application.html)
+        $('#tutors').dropdown({maxSelections:1});
+        $('#teammates').dropdown({maxSelections:3});
     })
 ;

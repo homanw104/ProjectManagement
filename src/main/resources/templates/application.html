@@ -28,25 +28,48 @@
         </div>
         <div class="ui twelve wide column">
 
-            <form class="ui form" th:action="@{/application}" th:object="project" method="post" enctype="multipart/form-data">
-                <h1 class="ui header">项目申报</h1>
+            <form class="ui form" th:action="@{/application}" method="post" enctype="multipart/form-data">
+                <h1 class="ui header">
+                    项目申报
+                </h1>
                 <div class="field">
                     <label for="name">项目名称</label>
-                    <input type="text" id="name" name="name" maxlength="100">
+                    <input type="text" th:object="${project}" id="name" name="name" maxlength="100">
+                </div>
+                <div class="field">
+                    <label for="tutors">选择你的导师</label>
+                    <select th:object="${project}" type="text" id="tutors" name="tutors"
+                            class="ui fluid search dropdown" multiple>
+                        <option th:each="tutor:${tutors}"
+                                th:value="${tutor.uid}"
+                                th:text="${tutor.name} + ' ' + ${tutor.uid}">
+                        </option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="teammates">选择你的队友</label>
+                    <select th:object="${project}" type="text" id="teammates" name="teammates"
+                            class="ui fluid search dropdown" multiple>
+                        <option th:each="student:${students}"
+                                th:value="${student.uid}"
+                                th:text="${student.name} + ' ' + ${student.uid}">
+                        </option>
+                    </select>
                 </div>
                 <div class="field">
                     <label for="profile">项目简介</label>
-                    <textarea type="text" id="profile" name="profile" maxlength="200"></textarea>
+                    <textarea th:object="${project}" type="text" id="profile" name="profile" maxlength="200"></textarea>
                 </div>
                 <div class="field">
-                    <label for="file-url">上传附件</label>
+                    <label for="file-button">上传附件</label>
                     <div class="ui file action input">
+                        <label for="file-name"></label>
+                        <input type="file" id="file" name="file" autocomplete="off">
                         <input type="text" id="file-name" name="file-name" readonly>
-                        <input type="file" id="file-url" name="file-url" autocomplete="off">
-                        <div class="ui button" id="file-url-button">选择文件</div>
+                        <div class="ui button" id="file-button">选择文件</div>
                     </div>
                 </div>
-                <div class="ui button">确认提交</div>
+                <input type="submit" value="确认提交" class="ui fluid large red submit button"/>
             </form>
 
         </div>

@@ -48,18 +48,25 @@ public class Project implements Serializable {
      * Project profile
      */
     @Column
-    private String profile = "N/A";
+    private String profile = "";
+
+    /**
+     * Tutor (e.g. "20180001")
+     */
+    @Column
+    private String tutors = "";
 
     /**
      * Teammate (e.g. "10195555888,10185555999")
      */
-    @Column String teammate = "";
+    @Column
+    private String teammates = "";
 
     /**
      * File url
      */
     @Column
-    private String fileUrl = "N/A";
+    private String fileUrl = "";
 
     /**
      * Creation time
