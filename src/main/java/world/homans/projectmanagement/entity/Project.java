@@ -51,6 +51,11 @@ public class Project implements Serializable {
     private String profile = "N/A";
 
     /**
+     * Teammate (e.g. "10195555888,10185555999")
+     */
+    @Column String teammate = "";
+
+    /**
      * File url
      */
     @Column

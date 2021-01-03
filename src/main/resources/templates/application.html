@@ -16,8 +16,6 @@
     <!-- Site Specified Style and Script -->
     <link rel="stylesheet" type="text/css" href="css/common.css" th:href="@{css/common.css}">
     <script src="js/common.js" th:src="@{js/common.js}"></script>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <script src="js/index.js"></script>
 </head>
 
 <body>
@@ -30,30 +28,26 @@
         </div>
         <div class="ui twelve wide column">
 
-            <form class="ui form">
-                <h2 class="ui header">项目申报</h2>
+            <form class="ui form" th:action="@{/application}" th:object="project" method="post" enctype="multipart/form-data">
+                <h1 class="ui header">项目申报</h1>
                 <div class="field">
-                    <label>
-                        <input type="text" name="name" placeholder="项目名称">
-                    </label>
+                    <label for="name">项目名称</label>
+                    <input type="text" id="name" name="name" maxlength="100">
                 </div>
                 <div class="field">
-                    <label>
-                        <textarea type="text" name="profile" placeholder="项目简介"></textarea>
-                    </label>
+                    <label for="profile">项目简介</label>
+                    <textarea type="text" id="profile" name="profile" maxlength="200"></textarea>
                 </div>
                 <div class="field">
-                    <div class="ui fluid file input action">
-                        <label>
-                            <input type="text" readonly="">
-                        </label>
-                        <input type="file" name="file-url" autocomplete="off">
-                        <div class="ui button">选择文件</div>
+                    <label for="file-url">上传附件</label>
+                    <div class="ui file action input">
+                        <input type="text" id="file-name" name="file-name" readonly>
+                        <input type="file" id="file-url" name="file-url" autocomplete="off">
+                        <div class="ui button" id="file-url-button">选择文件</div>
                     </div>
                 </div>
+                <div class="ui button">确认提交</div>
             </form>
-            <div class="ui placeholder segment"></div>
-            <div class="ui placeholder segment"></div>
 
         </div>
     </div>
