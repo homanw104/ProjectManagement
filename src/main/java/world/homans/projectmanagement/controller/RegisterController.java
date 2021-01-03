@@ -3,7 +3,6 @@ package world.homans.projectmanagement.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import world.homans.projectmanagement.entity.Role;
 import world.homans.projectmanagement.entity.Status;
 import world.homans.projectmanagement.entity.User;
 import world.homans.projectmanagement.service.UserService;
@@ -24,17 +23,23 @@ public class RegisterController {
     /**
      * 注册界面显示
      * @param model 与该界面绑定的对象集合
-     * @return 登陆界面
+     * @return 如 cookie 不存在或失效则显示登录界面，否则返回主页面
      */
     @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("user", new User());
-        return "register";
+    public String register(@CookieValue(value = "uid", defaultValue = "-1") Long uid, Model model) {
+        User user = userService.getUser(uid);
+        if (user == null) {
+            model.addAttribute("user", new User());
+            return "register";
+        } else {
+            return "redirect:";
+        }
     }
 
     /**
      * 注册表单提交
      * @param user 与该界面绑定的用户对象
+     * @param response 返回客户端的 http 对象
      * @return 系统主界面
      */
     @PostMapping("/register")
@@ -42,7 +47,6 @@ public class RegisterController {
         // TODO 对提交内容进行校验
 
         /* 设置 mtime ctime 及默认值 */
-        user.setRole(Role.STUDENT);
         user.setStatus(Status.ACTIVATED);
         user.setCtime(new Date());
         user.setMtime(new Date());

@@ -26,19 +26,16 @@ public class UserService {
     /**
      * 添加用户
      * @param user 用户对象
-     * @return 用户对象
      */
-    @PostMapping()
-    public User saveUser(@RequestBody User user) {
-        return userRepository.save(user);
+    public void saveUser(User user) {
+        userRepository.save(user);
     }
 
     /**
      * 通过uid删除用户
      * @param uid 用户uid
      */
-    @DeleteMapping("/{uid}")
-    public void deleteUser(@PathVariable("uid") Long uid) {
+    public void deleteUser(Long uid) {
         userRepository.deleteById(uid);
     }
 
@@ -46,21 +43,18 @@ public class UserService {
      * 修改用户信息
      * @param uid 用户uid
      * @param user 用户对象
-     * @return 用户对象
      */
-    @PutMapping("/{uid}")
-    public User updateUser(@PathVariable("uid") Long uid, @RequestBody User user) {
+    public void updateUser(Long uid, @RequestBody User user) {
         user.setUid(uid);
-        return userRepository.saveAndFlush(user);
+        userRepository.saveAndFlush(user);
     }
 
     /**
      * 获取特定用户信息
      * @param uid 用户uid
-     * @return 用户对象 如果用户不存在，返回null
+     * @return 如果用户不存在，返回 null ，否则返回用户对象
      */
-    @GetMapping("/{uid}")
-    public User getUser(@PathVariable("uid") Long uid) {
+    public User getUser(Long uid) {
         Optional<User> optional = userRepository.findById(uid);
         return optional.orElse(null);
     }
@@ -71,9 +65,7 @@ public class UserService {
      * @param pageSize 单页条目数
      * @return Page对象
      */
-    @GetMapping("/list")
-    public Page<User> pageQuery(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
-                                @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize) {
+    public Page<User> pageQuery(int pageNum, int pageSize) {
         return userRepository.findAll(PageRequest.of(pageNum - 1, pageSize));
     }
 }
