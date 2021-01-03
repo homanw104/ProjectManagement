@@ -57,7 +57,7 @@ public class UserService {
     /**
      * 获取特定用户信息
      * @param uid 用户uid
-     * @return 用户对象
+     * @return 用户对象 如果用户不存在，返回null
      */
     @GetMapping("/{uid}")
     public User getUser(@PathVariable("uid") Long uid) {
