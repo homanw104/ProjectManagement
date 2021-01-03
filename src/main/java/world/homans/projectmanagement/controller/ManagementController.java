@@ -10,6 +10,8 @@ import world.homans.projectmanagement.entity.User;
 import world.homans.projectmanagement.service.ProjectService;
 import world.homans.projectmanagement.service.UserService;
 
+import java.util.ArrayList;
+
 @Controller
 public class ManagementController {
 
@@ -32,7 +34,11 @@ public class ManagementController {
         User user = userService.getUser(uid);
         model.addAttribute("user",user);
         Project project = new Project();
-        model.addAttribute("project",project);
+        ArrayList<Project> projects = new ArrayList<>();
+        for (int i = 0; i < 6; i++)  {
+            projects.add(project);
+        }
+        model.addAttribute("projects",projects);
         return "management";
     }
 

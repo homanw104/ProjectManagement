@@ -29,7 +29,7 @@
             <div th:replace="common::common_menu(3)"></div>
         </div>
         <div class="ui twelve wide column">
-            <table class="ui celled table">
+            <table th:each="project : ${projects}" class="ui celled table">
                 <thead>
                 <tr><th>项目名称</th>
                     <th>项目简介</th>
@@ -48,11 +48,16 @@
                 </tbody>
                 <tfoot class="full-width">
                 <tr>
-                    <th></th>
-                    <th colspan="4">
-                        <div class="ui right floated small green button">
-                            管理项目信息
-                        </div>
+                    <th colspan="5">
+                        <button href="#" class="ui right floated small green button">
+                            修改项目信息
+                        </button>
+                        <button class="ui right floated small red button">
+                            删除项目
+                        </button>
+                        <button class="ui right floated small blue button">
+                            查看项目详情
+                        </button>
                     </th>
                 </tr>
                 </tfoot>
