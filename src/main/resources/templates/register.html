@@ -37,10 +37,10 @@
                                 <div class="text">你是谁</div>
                                 <i class="dropdown icon"></i>
                                 <div class="menu">
-                                    <div class="item" th:checked="${user.role==1}">是学生</div>
-                                    <div class="item" th:checked="${user.role==2}">是导师</div>
-                                    <div class="item" th:checked="${user.role==3}">是评审</div>
-                                    <div class="item" th:checked="${user.role==0}">管理员</div>
+                                    <div class="item" th:checked="${user.role=='1'}">是学生</div>
+                                    <div class="item" th:checked="${user.role=='2'}">是导师</div>
+                                    <div class="item" th:checked="${user.role=='3'}">是评审</div>
+                                    <div class="item" th:checked="${user.role=='0'}">管理员</div>
                                 </div>
                             </div>
                         </div>
