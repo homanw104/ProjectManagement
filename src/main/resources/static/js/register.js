@@ -42,5 +42,6 @@ $(document)
                 }
             })
         ;
+        $('.ui.dropdown').dropdown();
     })
 ;

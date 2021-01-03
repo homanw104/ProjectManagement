@@ -24,7 +24,7 @@ public class User implements Serializable {
     private Status status = Status.ACTIVATED;
 
     /**
-     * ADMIN, STUDENT, TUTOR, ASSESSOR
+     * ADMIN=0, STUDENT=1, TUTOR=2, ASSESSOR=3
      */
     @Column
     private Role role = Role.STUDENT;
