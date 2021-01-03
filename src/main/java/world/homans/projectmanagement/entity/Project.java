@@ -1,13 +1,8 @@
 package world.homans.projectmanagement.entity;
 
-
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.swing.*;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -21,6 +16,7 @@ public class Project implements Serializable {
      * Project ID
      */
     @Id
+    @GeneratedValue
     private long pid = -1;
 
     /**
@@ -30,28 +26,35 @@ public class Project implements Serializable {
     private Status status = Status.ACTIVATED;
 
     /**
+     * DRAFT, INIT_REVIEWING, INIT_REVIEWED, MIDTERM_REVIEWING,
+     * MIDTERM_REVIEWED, FINAL_REVIEWING, FINAL_REVIEWED, TERMINATED
+     */
+    @Column
+    private Progress progress = Progress.DRAFT;
+
+    /**
+     * Project score
+     */
+    @Column
+    private int score = -1;
+
+    /**
      * Project name
      */
     @Column
     private String name = "N/A";
 
     /**
-     * Project Profile
+     * Project profile
      */
     @Column
     private String profile = "N/A";
 
     /**
-     * Project Status（In progress/reviewed/approved）
+     * File url
      */
     @Column
-    private String state = "progress";
-
-    /**
-     * Project point（？如何把数据类型改成数字）
-     */
-    @Id
-    private String point = "-1";
+    private String fileUrl = "N/A";
 
     /**
      * Creation time
@@ -64,10 +67,4 @@ public class Project implements Serializable {
      */
     @Column
     private Date mtime = new Date();
-
-    /**
-     * fileurl
-     */
-    @Column
-    private String fileurl = "N/A";
 }

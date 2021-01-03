@@ -3,7 +3,6 @@ package world.homans.projectmanagement.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 import world.homans.projectmanagement.entity.User;
 import world.homans.projectmanagement.repository.UserRepository;
 
@@ -32,8 +31,8 @@ public class UserService {
     }
 
     /**
-     * 通过uid删除用户
-     * @param uid 用户uid
+     * 通过 uid 删除用户
+     * @param uid 用户 uid
      */
     public void deleteUser(Long uid) {
         userRepository.deleteById(uid);
@@ -41,18 +40,18 @@ public class UserService {
 
     /**
      * 修改用户信息
-     * @param uid 用户uid
-     * @param user 用户对象
+     * @param uid 被更新的用户 uid
+     * @param user 新的用户对象
      */
-    public void updateUser(Long uid, @RequestBody User user) {
+    public void updateUser(Long uid, User user) {
         user.setUid(uid);
         userRepository.saveAndFlush(user);
     }
 
     /**
      * 获取特定用户信息
-     * @param uid 用户uid
-     * @return 如果用户不存在，返回 null ，否则返回用户对象
+     * @param uid 用户 uid
+     * @return 如果用户不存在，返回 null，否则返回用户对象
      */
     public User getUser(Long uid) {
         Optional<User> optional = userRepository.findById(uid);

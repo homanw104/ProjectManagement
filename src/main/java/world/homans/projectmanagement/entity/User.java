@@ -15,7 +15,6 @@ public class User implements Serializable {
      * User ID
      */
     @Id
-    // @GeneratedValue // TODO 自定义用户ID生成规则
     private long uid = -1;
 
     /**
