@@ -35,5 +35,4 @@ public class ManagementController {
         model.addAttribute("project",project);
         return "management";
     }
-
 }

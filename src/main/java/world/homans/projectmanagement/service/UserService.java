@@ -3,9 +3,11 @@ package world.homans.projectmanagement.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import world.homans.projectmanagement.entity.Role;
 import world.homans.projectmanagement.entity.User;
 import world.homans.projectmanagement.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -62,13 +64,25 @@ public class UserService {
      * 获取用户列表
      * @param pageNum 页号
      * @param pageSize 单页条目数
-     * @return Page对象
+     * @return Page 对象
      */
     public Page<User> pageQuery(int pageNum, int pageSize) {
         return userRepository.findAll(PageRequest.of(pageNum - 1, pageSize));
     }
 
     /**
-     *
+     * 获取学生列表
+     * @return 学生列表 ArrayList
      */
+    public ArrayList<User> listStudents() {
+        return userRepository.findAllByRole(Role.STUDENT);
+    }
+
+    /**
+     * 获取导师列表
+     * @return 导师列表 ArrayList
+     */
+    public ArrayList<User> listTutors() {
+        return userRepository.findAllByRole(Role.TUTOR);
+    }
 }
