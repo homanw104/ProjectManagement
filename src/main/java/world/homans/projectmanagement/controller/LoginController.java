@@ -50,12 +50,12 @@ public class LoginController {
 
         /* 校验用户名 */
         if (userFound == null) {
-            return "login";
+            return "redirect:login?result=UserNotFound";
         }
 
         /* 校验密码 */
         if (!userFound.getPassword().equals(user.getPassword())) {
-            return "login";
+            return "redirect:login?result=WrongPassword";
         }
 
         /* 储存 uid Cookie 到用户端 */

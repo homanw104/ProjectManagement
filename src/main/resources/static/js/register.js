@@ -34,8 +34,8 @@ $(document)
                         identifier  : 'password-repeat',
                         rules: [
                             {
-                                type   : 'empty',
-                                prompt : '再输入一次密码啦~',
+                                type   : 'match[password]',
+                                prompt : '和上面的密码不一致哦~'
                             }
                         ]
                     },
