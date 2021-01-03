@@ -85,4 +85,12 @@ public class UserService {
     public ArrayList<User> listTutors() {
         return userRepository.findAllByRole(Role.TUTOR);
     }
+
+    /**
+     * 获取所有用户列表
+     * @return 所有用户列表 ArrayList
+     */
+    public ArrayList<User> listUsers() {
+        return userRepository.findAll();
+    }
 }
