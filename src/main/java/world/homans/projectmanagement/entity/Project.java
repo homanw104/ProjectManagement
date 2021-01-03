@@ -69,6 +69,12 @@ public class Project implements Serializable {
     private String fileUrl = "";
 
     /**
+     * Tutor's comment
+     */
+    @Column
+    private String comment = "";
+
+    /**
      * Creation time
      */
     @Column

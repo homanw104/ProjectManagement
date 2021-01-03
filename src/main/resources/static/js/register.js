@@ -1,5 +1,6 @@
 $(document)
     .ready(function() {
+
         $('.ui.form')
             .form({
                 fields: {
@@ -42,6 +43,9 @@ $(document)
                 }
             })
         ;
-        $('.ui.dropdown').dropdown();
+
+        $('#role')
+            .dropdown()
+        ;
     })
 ;

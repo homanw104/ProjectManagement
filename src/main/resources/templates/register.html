@@ -28,33 +28,32 @@
                 </div>
             </h1>
 
-            <form th:action="@{/register}" th:object="${user}" method="post" class="ui large form">
+            <form th:action="@{/register}" method="post" class="ui large form">
                 <div class="ui stacked segment">
                     <div class="field">
                         <div class="ui right action input">
-                            <input type="text" name="uid" placeholder="学工号">
-                            <div class="ui basic floating dropdown button">
-                                <div class="text">你是谁</div>
-                                <i class="dropdown icon"></i>
-                                <div class="menu">
-                                    <div class="item" th:checked="${user.role=='1'}">是学生</div>
-                                    <div class="item" th:checked="${user.role=='2'}">是导师</div>
-                                    <div class="item" th:checked="${user.role=='3'}">是评审</div>
-                                    <div class="item" th:checked="${user.role=='0'}">管理员</div>
-                                </div>
-                            </div>
+                            <label for="uid"></label>
+                            <input type="text" id="uid" name="user-uid" placeholder="学工号">
+                            <label for="role"></label>
+                            <select class="ui compact selection dropdown" id="role" name="user-role">
+                                <option class="item" value="">你是谁</option>
+                                <option class="item" value="1">是学生</option>
+                                <option class="item" value="2">是导师</option>
+                                <option class="item" value="3">是评审</option>
+                                <option class="item" value="0">管理员</option>
+                            </select>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui input">
                             <label for="name"></label>
-                            <input type="text" id="name" name="name" placeholder="姓名">
+                            <input th:object="${user}" type="text" id="name" name="name" placeholder="姓名">
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui input">
                             <label for="password"></label>
-                            <input type="password" id="password" name="password" placeholder="密码">
+                            <input th:object="${user}" type="password" id="password" name="password" placeholder="密码">
                         </div>
                     </div>
                     <div class="field">
@@ -69,7 +68,7 @@
             </form>
 
             <div class="ui message">
-                什么，你是我们的人？(*￣3￣)╭ <a href="login">登录</a>！
+                什么，你来过这里？(*￣3￣)╭ <a href="login">登录</a>！
             </div>
 
         </div>

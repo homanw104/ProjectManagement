@@ -66,7 +66,7 @@ public class ApplicationController {
             File fileDir = new File(filePath);
             if (!fileDir.exists())
                 if (!fileDir.mkdirs())
-                    return "redirect:/application?result=FailedToCreateDir";    // Fail to create dir.
+                    return "redirect:/application?result=FailedToCreateDir";
 
             /* 保存文件 */
             File destFile = new File(filePath + file.getOriginalFilename());
@@ -75,10 +75,10 @@ public class ApplicationController {
             /* 保存文件路径并保存项目信息 */
             project.setFileUrl(destFile.getAbsolutePath());
             projectService.saveProject(project);
-            return "redirect:/application?result=Success";                      // Success.
+            return "redirect:/application?result=Success";
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:/application?result=Failed";                           // Failed.
+        return "redirect:/application?result=Failed";
     }
 }
