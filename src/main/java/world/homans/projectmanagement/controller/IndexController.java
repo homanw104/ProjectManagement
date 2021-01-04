@@ -25,17 +25,15 @@ public class IndexController {
     @GetMapping("")
     public String index(@CookieValue(value = "uid", defaultValue = "-1") Long uid, Model model) {
         User user = userService.getUser(uid);
-        if (user == null) {
-            return "redirect:/login";
-        } else {
-            model.addAttribute("user", user);
-            switch (user.getRole()) {
-                case ADMIN: return "index/index-admin";
-                case STUDENT: return "index/index-student";
-                case TUTOR: return "index/index-tutor";
-                case ASSESSOR: return "index/index-assessor";
-                default: return "redirect:/login";
-            }
+        if (user == null) return "redirect:/login";
+
+        model.addAttribute("user", user);
+        switch (user.getRole()) {
+            case ADMIN: return "index/index-admin";
+            case STUDENT: return "index/index-student";
+            case TUTOR: return "index/index-tutor";
+            case ASSESSOR: return "index/index-assessor";
+            default: return "redirect:/login";
         }
     }
 }

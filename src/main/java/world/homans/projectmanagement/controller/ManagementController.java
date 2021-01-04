@@ -31,33 +31,32 @@ public class ManagementController {
     @GetMapping("/management")
     public String management(@CookieValue(value = "uid", defaultValue = "-1") Long uid, Model model){
         User user = userService.getUser(uid);
-        if (user == null) {
-            return "redirect:/login";
-        } else {
-            model.addAttribute("user", user);
-            switch (user.getRole()) {
-                /* 管理员 返回所有项目 */
-                case ADMIN:
-                    ArrayList<Project> projects = projectService.listProjects();
-                    model.addAttribute("projects", projects);
-                    return "management/management-admin";
-                /* 学生 返回相关项目 */
-                case STUDENT:
-                    ArrayList<Project> projects = projectService.listProjects(Long uid);
-                    model.addAttribute("projects", projects);
-                    return "management/management-student";
-                /* 导师 返回相关项目 */
-                case TUTOR:
-                    ArrayList<Project> projects = projectService.listProjects(Long uid);
-                    model.addAttribute("projects", projects);
-                    return "management/management-tutor";
-                /* 评审 返回所有项目 */
-                case ASSESSOR:
-                    ArrayList<Project> projects = projectService.listProjects();
-                    model.addAttribute("projects", projects);
-                    return "management/management-assessor";
-                default: return "redirect:/login";
-            }
+        if (user == null) return "redirect:/login";
+
+        model.addAttribute("user", user);
+        ArrayList<Project> projects;
+        switch (user.getRole()) {
+            /* 管理员 返回所有项目 */
+            case ADMIN:
+                projects = projectService.listProjects();
+                model.addAttribute("projects", projects);
+                return "management/management-admin";
+            /* 学生 返回相关项目 */
+            case STUDENT:
+                projects = projectService.listProjects(uid);
+                model.addAttribute("projects", projects);
+                return "management/management-student";
+            /* 导师 返回相关项目 */
+            case TUTOR:
+                projects = projectService.listProjects(uid);
+                model.addAttribute("projects", projects);
+                return "management/management-tutor";
+            /* 评审 返回所有项目 */
+            case ASSESSOR:
+                projects = projectService.listProjects();
+                model.addAttribute("projects", projects);
+                return "management/management-assessor";
+            default: return "redirect:/login";
         }
     }
 }

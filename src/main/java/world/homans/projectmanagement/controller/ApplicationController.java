@@ -33,6 +33,8 @@ public class ApplicationController {
     @GetMapping("/application")
     public String application(@CookieValue(value = "uid", defaultValue = "-1") Long uid, Model model) {
         User user = userService.getUser(uid);
+        if (user == null) return "redirect:/login";
+
         Project project = new Project();
         ArrayList<User> students = userService.listStudents();
         ArrayList<User> tutors = userService.listTutors();

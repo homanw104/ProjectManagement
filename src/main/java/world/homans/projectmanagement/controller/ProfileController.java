@@ -30,6 +30,8 @@ public class ProfileController {
     @GetMapping("/profile")
     public String profile(@CookieValue(value = "uid", defaultValue = "-1") Long uid, Model model){
         User user = userService.getUser(uid);
+        if (user == null) return "redirect:/login";
+
         Profile profile = profileService.getProfile(uid);
         model.addAttribute("user", user);
         model.addAttribute("profile", profile);
