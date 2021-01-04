@@ -77,7 +77,7 @@ public class ApplicationController {
             /* 保存文件路径并保存项目信息 */
             project.setFileUrl(destFile.getAbsolutePath());
             projectService.saveProject(project);
-            return "redirect:/application?result=Success";
+            return "redirect:/management?result=Success";
         } catch (IOException e) {
             e.printStackTrace();
         }

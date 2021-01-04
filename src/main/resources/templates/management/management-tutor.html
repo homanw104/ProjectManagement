@@ -9,6 +9,7 @@
 
     <!-- Site Properties -->
     <title>双创项目管理 - 项目管理</title>
+    <link rel="icon" type="image/x-icon" href="img/icon.png" th:href="@{/img/icon.png}"/>
     <link rel="stylesheet" type="text/css" href="dist/semantic.min.css" th:href="@{/dist/semantic.min.css}">
     <script src="js/jquery-3.5.1.min.js" th:src="@{/js/jquery-3.5.1.min.js}"></script>
     <script src="dist/semantic.min.js" th:src="@{/dist/semantic.min.js}"></script>
@@ -16,8 +17,6 @@
     <!-- Site Specified Style and Script -->
     <link rel="stylesheet" type="text/css" href="css/common.css" th:href="@{/css/common.css}">
     <script src="js/common.js" th:src="@{/js/common.js}"></script>
-    <link rel="stylesheet" type="text/css" href="css/index.css" th:href="@{/css/index.css}">
-    <script src="js/index.js" th:src="@{/js/index.js}"></script>
 </head>
 
 <body>
@@ -29,54 +28,61 @@
             <div th:replace="common::common_menu(3)"></div>
         </div>
         <div class="ui twelve wide column">
+
             <h1 class="ui header">项目管理</h1>
             <div th:each="project:${projects}"class="ui container">
-                <div class="ui top attached segment">
-                    <h2 class="ui header" th:text="${project.name}"></h2>
-                    <div class="ui segment">
-                        <div class="ui grid">
-                            <div class="ui eight wide column">
-                                <div class="ui container">
-                                    <h3 class="ui header">项目简介：</h3>
-                                    <p th:text="${project.profile}"></p>
-                                    <h3 class="ui header">项目得分：</h3>
-                                    <p th:text="${project.score}"></p>
+
+                <div class="ui top attached block header">
+                    <div class="ui middle aligned two column centered grid">
+                        <div class="left floated column">
+                            <h3 class="ui header" th:text="${project.name}"></h3>
+                        </div>
+                        <div class="right floated column">
+                            <a th:href="'/delete/' + ${project.pid}">
+                                <button class="ui gray right floated button"><i class="trash alternate icon"></i>删除</button>
+                            </a>
+                            <a th:href="'/project/' + ${project.pid}">
+                                <button class="ui gray right floated button"><i class="edit icon"></i>修改</button>
+                            </a>
+                            <button class="ui detail gray right floated button"><i class="info icon"></i>详情</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui mid attached segment">
+                    <div class="ui grid">
+                        <div class="ui ten wide column">
+                            <p th:text="${project.profile}"></p>
+                        </div>
+                        <div class="ui six wide column">
+                            <h5 class="ui header">项目导师</h5>
+                            <p th:text="${project.tutors}" class="right aligned"></p>
+                            <h5 class="ui header">项目成员</h5>
+                            <p th:text="${project.teammates}" class="right aligned"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui project detail attached segment">
+                    <div class="ui comments">
+                        <div class="comment">
+                            <a class="avatar"><img src="/img/head1.png" th:src="@{/img/head_tutor.png}" alt="Avatar"></a>
+                            <div class="content">
+                                <a class="author">导师评论</a>
+                                <div class="metadata">
+                                    <div class="rating" th:if="${project.score}==-1">
+                                        <i class="percent icon"></i>暂无评分
+                                    </div>
+                                    <div class="rating" th:unless="${project.score}==-1" th:text="${project.score} + ' 分'">
+                                        <i class="percent icon"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="ui eight wide column">
-                                <div class="ui container">
-                                    <h3 class="ui header">项目导师：</h3>
-                                    <p th:text="${project.tutors}"></p>
-                                    <h3 class="ui header">项目成员：</h3>
-                                    <p th:text="${project.teammates}"></p>
-                                </div>
+                                <div class="text" th:if="${project.comment}==''" th:text="'暂无评论'"></div>
+                                <div class="text" th:unless="${project.comment}==''" th:text="${project.comment}"></div>
                             </div>
                         </div>
                     </div>
-                    <button class="ui green button">
-                        <i class="edit icon"></i>
-                        修改
-                    </button>
-                    <button class="ui red button">
-                        <i class="trash alternate icon"></i>
-                        删除
-                    </button>
                 </div>
+                <div class="ui project detail three bottom attached steps">
 
-                <div class="ui attached segment">
-                    <form class="ui form">
-                        <div class="field">
-                            <textarea rows="2"></textarea>
-                        </div>
-                        <div class="ui blue primary submit labeled icon button">
-                            <i class="icon edit"></i> Add Comment
-                        </div>
-                    </form>
-                </div>
-
-                <div class="ui three bottom attached steps">
-
-                    <!--                //Case 0:-->
                     <div th:if="${project.progress.name()}=='DRAFT'" class="active step">
                         <i class="lightbulb icon"></i>
                         <div class="content">
@@ -99,7 +105,6 @@
                         </div>
                     </div>
 
-                    <!--                    //Case 1:-->
                     <div th:if="${project.progress.name()}=='INIT_REVIEWING'" class="active step">
                         <i class="lightbulb icon"></i>
                         <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
@@ -113,7 +118,6 @@
                         <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
                     </div>
 
-                    <!--                    //Case 2:-->
                     <div th:if="${project.progress.name()}=='INIT_REVIEWED'" class="active step">
                         <i class="lightbulb icon"></i>
                         <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
@@ -127,7 +131,6 @@
                         <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
                     </div>
 
-                    <!--                    //Case 3:-->
                     <div th:if="${project.progress.name()}=='MIDTERM_REVIEWING'" class="step">
                         <i class="green check circle outline icon"></i>
                         <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
@@ -141,7 +144,6 @@
                         <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
                     </div>
 
-                    <!--                    //Case 4:-->
                     <div th:if="${project.progress.name()}=='MIDTERM_REVIEWED'" class="step">
                         <i class="green check circle outline icon"></i>
                         <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
@@ -155,7 +157,6 @@
                         <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
                     </div>
 
-                    <!--                    //Case 5:-->
                     <div th:if="${project.progress.name()}=='FINAL_REVIEWING'" class="step">
                         <i class="green check circle outline icon"></i>
                         <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
@@ -169,7 +170,6 @@
                         <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
                     </div>
 
-                    <!--                    //Case 6:-->
                     <div th:if="${project.progress.name()}=='FINAL_REVIEWED'" class="step">
                         <i class="green check circle outline icon"></i>
                         <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
@@ -183,7 +183,6 @@
                         <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
                     </div>
 
-                    <!--                    //Case 7:-->
                     <div th:if="${project.progress.name()}=='TERMINATED'" class="disabled step">
                         <i class="close icon"></i>
                         <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
@@ -199,39 +198,6 @@
                 </div>
                 <br><br>
             </div>
-
-
-            <!--            <h1 class="ui header">项目管理</h1>-->
-            <!--            <table th:each="project:${projects}" class="ui celled table">-->
-            <!--                <thead><tr>-->
-            <!--                    <th>项目名称</th>-->
-            <!--                    <th>项目简介</th>-->
-            <!--                    <th>成员信息</th>-->
-            <!--                    <th>项目状态</th>-->
-            <!--                    <th>项目得分</th>-->
-            <!--                </tr></thead>-->
-            <!--                <tbody><tr>-->
-            <!--                    <td th:text="${project.name}">null</td>-->
-            <!--                    <td th:text="${project.profile}">null</td>-->
-            <!--                    <td th:text="${project.teammates}">null</td>-->
-            <!--                    <td th:text="${project.progress}">null</td>-->
-            <!--                    <td th:text="${project.score}">null</td>-->
-            <!--                </tr></tbody>-->
-            <!--                <tfoot class="full-width"><tr><th colspan="5">-->
-            <!--                    <button class="ui right floated small red button">-->
-            <!--                        <i class="trash alternate icon"></i>-->
-            <!--                        删除-->
-            <!--                    </button>-->
-            <!--                    <button class="ui right floated small blue button">-->
-            <!--                        <i class="info circle icon"></i>-->
-            <!--                        详情-->
-            <!--                    </button>-->
-            <!--                    <button class="ui right floated small green button">-->
-            <!--                        <i class="edit icon"></i>-->
-            <!--                        修改-->
-            <!--                    </button>-->
-            <!--                </th></tr></tfoot>-->
-            <!--            </table>-->
 
         </div>
     </div>

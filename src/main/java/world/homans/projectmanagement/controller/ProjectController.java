@@ -41,7 +41,7 @@ public class ProjectController {
 
         model.addAttribute("user", user);
         model.addAttribute("project", project);
-        return "project";
+        return "project-edit";
     }
 
     /**
@@ -77,8 +77,11 @@ public class ProjectController {
 
             /* 保存文件路径并保存项目信息 */
             project.setFileUrl(destFile.getAbsolutePath());
-            projectService.saveProject(project);
-            return "redirect:/management?result=Success";
+            Project baseProject = projectService.getProject(pid);
+            baseProject.setName(project.getName());
+            baseProject.setProfile(project.getProfile());
+            projectService.saveProject(baseProject);
+            return "redirect:/management?result=UpdateSuccess";
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -90,10 +93,10 @@ public class ProjectController {
      * @param pid 项目 pid
      * @return 返回管理界面
      */
-    @DeleteMapping("/project/{pid}")
+    @GetMapping("/delete/{pid}")
     public String deleteProject(@PathVariable(value = "pid") Long pid) {
         if (projectService.getProject(pid) == null) return "redirect:/management?result=FailToFindProject";
         projectService.deleteProject(pid);
-        return "redirect:/management?result=Success";
+        return "redirect:/management?result=DeleteSuccess";
     }
 }
