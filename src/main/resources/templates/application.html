@@ -27,11 +27,10 @@
             <div th:replace="common::common_menu(2)"></div>
         </div>
         <div class="ui twelve wide column">
-
+            <h1 class="ui header">
+                项目申报
+            </h1>
             <form class="ui form" th:action="@{/application}" method="post" enctype="multipart/form-data">
-                <h1 class="ui header">
-                    项目申报
-                </h1>
                 <div class="field">
                     <label for="name">项目名称</label>
                     <input type="text" th:object="${project}" id="name" name="name" maxlength="100">
