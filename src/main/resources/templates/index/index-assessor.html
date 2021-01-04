@@ -27,8 +27,18 @@
             <div th:replace="common::common_menu(0)"></div>
         </div>
         <div class="ui twelve wide column">
-            <h1 class="ui header">评审员界面</h1>
-            <div class="ui placeholder segment"></div>
+            <h1 class="ui header">欢迎进入项目管理平台评审员端</h1>
+            <h2 th:text="'Welcome, ' + ${user.name}" class="ui header"></h2>
+            <div class="ui segment">
+
+                <h3 class="ui header">Here is a simple guide  <i class="handshake icon"></i> </h3>
+                <img class="ui centered medium image" src="/img/head.jpg">
+                <h4 class="ui header">If you want to change Personal Profile, you should click the [个人信息]</h4>
+                <h4 class="ui header">If you want to create a New Project, you should click the [项目申报]</h4>
+                <h4 class="ui header">If you want to modify Project information, you should click the [项目管理]</h4>
+                <h1 class="ui header">Enjoy!</h1>
+                <br>
+                <h5 class="ui centered header">Create by Homan & Temper 2020-2021</h5>
         </div>
     </div>
 </div>
