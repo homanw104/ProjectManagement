@@ -1,13 +1,10 @@
 package world.homans.projectmanagement.service;
 
-
 import org.springframework.stereotype.Service;
 import world.homans.projectmanagement.entity.Profile;
 import world.homans.projectmanagement.repository.ProfileRepository;
-import world.homans.projectmanagement.repository.UserRepository;
 
 import java.util.Optional;
-
 
 /**
  * 用户个人信息增删改查服务
@@ -30,6 +27,6 @@ public class ProfileService {
      */
     public Profile getProfile(Long uid) {
         Optional<Profile> optional = profileRepository.findById(uid);
-        return optional.orElse(profileRepository.saveAndFlush(new Profile()));
+        return optional.orElse(profileRepository.save(new Profile(uid)));
     }
 }

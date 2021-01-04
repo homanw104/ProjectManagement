@@ -45,8 +45,9 @@
             <div class="meta"><span th:text="${user.uid}" class="uid">学工号</span></div>
             <div class="description">软件工程学院</div>
         </div>
-        <div class="extra content">
-            <a><i class="code icon"></i>没有项目</a>
+        <div class="inline extra content field">
+            <i class="calendar alternate icon"></i>
+            <span th:text="'加入自 ' + ${user.getCreationTime()}" class="ui text"></span>
         </div>
     </div>
     <div class="ui vertical fluid stackable menu container">

@@ -28,10 +28,10 @@
         </div>
         <div class="ui twelve wide column">
             <h1 th:text="${user.name} + '的个人信息'" class="ui header"></h1>
-            <br>
+            <h1> </h1>
             <div class="ui two column grid">
                 <div class="ui column">
-                    <p class="ui header"><i class="user icon"></i>个人信息</p>
+                    <p class="ui header"><i class="user icon"></i>注册信息</p>
                     <div class="ui segments">
                         <div class="ui segment">
                             <p th:text="'学工号：' + ${user.uid}"></p>
@@ -42,13 +42,18 @@
                         <div class="ui segment">
                             <p th:text="'身份：' + ${user.role}"></p>
                         </div>
+                    </div>
+                    <div class="ui segments">
                         <div class="ui segment">
-                            <p th:text="'在' + ${user.ctime} + '加入'"></p>
+                            <p th:text="'注册时间：' + ${user.getCreationTime()}"></p>
+                        </div>
+                        <div class="ui segment">
+                            <p th:text="'上次修改：' + ${user.getModificationTime()}"></p>
                         </div>
                     </div>
                 </div>
                 <div class="ui column">
-                    <p class="ui header"><i class="bookmark icon"></i>其他信息</p>
+                    <p class="ui header"><i class="address card icon"></i>个人信息</p>
                     <div class="ui segments">
                         <div class="ui segment">
                             <p th:text="'性别：' + ${profile.gender}"></p>
@@ -72,13 +77,12 @@
                             <p th:text="'邮箱：' + ${profile.email}"></p>
                         </div>
                     </div>
+                    <button class="ui right floated green button">
+                        <i class="edit icon"></i>
+                        修改个人信息
+                    </button>
                 </div>
             </div>
-            <br>
-            <button class="ui right floated green button">
-                <i class="edit icon"></i>
-                修改个人信息
-            </button>
         </div>
     </div>
 </div>

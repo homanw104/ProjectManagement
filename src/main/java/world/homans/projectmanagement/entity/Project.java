@@ -13,57 +13,57 @@ import java.util.Date;
 public class Project implements Serializable {
 
     /**
-     * Project ID
+     * 项目编号 Project ID (自动生成)
      */
     @Id
     @GeneratedValue
     private long pid = -1;
 
     /**
-     * ACTIVATED, DEACTIVATED
+     * 项目状态 DEACTIVATED=0, ACTIVATED=1
      */
     @Column
     private Status status = Status.ACTIVATED;
 
     /**
-     * DRAFT, INIT_REVIEWING, INIT_REVIEWED, MIDTERM_REVIEWING,
-     * MIDTERM_REVIEWED, FINAL_REVIEWING, FINAL_REVIEWED, TERMINATED
+     * 项目进度 DRAFT=0, INIT_REVIEWING=1, INIT_REVIEWED=2, MIDTERM_REVIEWING=3,
+     * MIDTERM_REVIEWED=4, FINAL_REVIEWING=5, FINAL_REVIEWED=6, TERMINATED=7
      */
     @Column
     private Progress progress = Progress.DRAFT;
 
     /**
-     * Project score
+     * 项目评分 Project Score
      */
     @Column
     private int score = -1;
 
     /**
-     * Project name
+     * 项目名字 Project Name
      */
     @Column
     private String name = "N/A";
 
     /**
-     * Project profile
+     * 项目简介 Project Profile
      */
     @Column
     private String profile = "";
 
     /**
-     * Tutor (e.g. "20180001")
+     * 导师列表 Tutors (e.g. "20180001")
      */
     @Column
     private String tutors = "";
 
     /**
-     * Teammate (e.g. "10195555888,10185555999")
+     * 组员列表 Teammates (e.g. "10195555888,10185555999")
      */
     @Column
     private String teammates = "";
 
     /**
-     * File url
+     * 文件存储位置 File URL
      */
     @Column
     private String fileUrl = "";

@@ -5,5 +5,5 @@ import world.homans.projectmanagement.entity.Profile;
 
 public interface ProfileRepository extends JpaRepository<Profile,Long> {
 
-    public Profile findById(long uid);
+    public Profile findByUid(long uid);
 }
