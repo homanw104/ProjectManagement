@@ -1,6 +1,5 @@
 package world.homans.projectmanagement.controller;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -24,7 +23,7 @@ public class ProfileController {
 
     /**
      * 显示用户信息
-     * @param uid  读取用户端储存的 uid , 默认值 -1
+     * @param uid  读取用户端储存的 uid ，默认值 -1
      * @param model 与页面绑定的对象集合
      * @return 申请界面
      */
@@ -36,6 +35,4 @@ public class ProfileController {
         model.addAttribute("profile", profile);
         return "profile";
     }
-
-
 }

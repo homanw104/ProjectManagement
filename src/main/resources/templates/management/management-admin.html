@@ -29,41 +29,38 @@
             <div th:replace="common::common_menu(3)"></div>
         </div>
         <div class="ui twelve wide column">
-            <table th:each="project : ${projects}" class="ui celled table">
-                <thead>
-                <tr><th>项目名称</th>
+            <h1 class="ui header">项目管理</h1>
+            <table th:each="project:${projects}" class="ui celled table">
+                <thead><tr>
+                    <th>项目名称</th>
                     <th>项目简介</th>
                     <th>成员信息</th>
                     <th>项目状态</th>
                     <th>项目得分</th>
                 </tr></thead>
-                <tbody>
-                <tr>
+                <tbody><tr>
                     <td th:text="${project.name}">null</td>
                     <td th:text="${project.profile}">null</td>
-                    <td>null</td>
+                    <td th:text="${project.teammates}">null</td>
                     <td th:text="${project.progress}">null</td>
                     <td th:text="${project.score}">null</td>
-                </tr>
-                </tbody>
-                <tfoot class="full-width">
-                <tr>
-                    <th colspan="5">
-                        <button href="#" class="ui right floated small green button">
-                            修改项目信息
-                        </button>
-                        <button class="ui right floated small red button">
-                            删除项目
-                        </button>
-                        <button class="ui right floated small blue button">
-                            查看项目详情
-                        </button>
-                    </th>
-                </tr>
-                </tfoot>
+                </tr></tbody>
+                <tfoot class="full-width"><tr><th colspan="5">
+                    <button class="ui right floated small red button">
+                        <i class="trash alternate icon"></i>
+                        删除
+                    </button>
+                    <button class="ui right floated small blue button">
+                        <i class="info circle icon"></i>
+                        详情
+                    </button>
+                    <button class="ui right floated small green button">
+                        <i class="edit icon"></i>
+                        修改
+                    </button>
+                </th></tr></tfoot>
             </table>
         </div>
-
     </div>
 </div>
 

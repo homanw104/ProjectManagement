@@ -27,7 +27,7 @@
             <div th:replace="common::common_menu(1)"></div>
         </div>
         <div class="ui twelve wide column">
-            <h1 th:text="${user.name}+'的个人界面'" class="ui header"></h1>
+            <h1 th:text="${user.name} + '的个人信息'" class="ui header"></h1>
             <br>
             <div class="ui two column grid">
                 <div class="ui column">
@@ -40,10 +40,10 @@
                             <p th:text="'姓名：' + ${user.name}"></p>
                         </div>
                         <div class="ui segment">
-                            <p th:text="'性别：' + ${profile.gender}"></p>
+                            <p th:text="'身份：' + ${user.role}"></p>
                         </div>
                         <div class="ui segment">
-                            <p th:text="'身份：' + ${user.role}"></p>
+                            <p th:text="'在' + ${user.ctime} + '加入'"></p>
                         </div>
                     </div>
                 </div>
@@ -51,10 +51,13 @@
                     <p class="ui header"><i class="bookmark icon"></i>其他信息</p>
                     <div class="ui segments">
                         <div class="ui segment">
+                            <p th:text="'性别：' + ${profile.gender}"></p>
+                        </div>
+                        <div class="ui segment">
                             <p th:text="'学年：' + ${profile.year}"></p>
                         </div>
                         <div class="ui segment">
-                            <p th:text="'学校：' + ${profile.school}"></p>
+                            <p th:text="'学院：' + ${profile.school}"></p>
                         </div>
                         <div class="ui segment">
                             <p th:text="'专业：' + ${profile.major}"></p>
@@ -63,16 +66,19 @@
                             <p th:text="'职称：' + ${profile.position}"></p>
                         </div>
                         <div class="ui segment">
-                            <p>电话号码：</p>
+                            <p th:text="'电话：' + ${profile.mobile}"></p>
                         </div>
                         <div class="ui segment">
-                            <p>Email：</p>
+                            <p th:text="'邮箱：' + ${profile.email}"></p>
                         </div>
                     </div>
                 </div>
             </div>
             <br>
-            <button class="ui right floated green button">修改个人信息</button>
+            <button class="ui right floated green button">
+                <i class="edit icon"></i>
+                修改个人信息
+            </button>
         </div>
     </div>
 </div>

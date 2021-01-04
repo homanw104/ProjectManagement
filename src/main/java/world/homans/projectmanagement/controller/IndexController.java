@@ -30,10 +30,10 @@ public class IndexController {
         } else {
             model.addAttribute("user", user);
             switch (user.getRole()) {
-                case ADMIN: return "index-admin";
-                case STUDENT: return "index-student";
-                case TUTOR: return "index-tutor";
-                case ASSESSOR: return "index-assessor";
+                case ADMIN: return "index/index-admin";
+                case STUDENT: return "index/index-student";
+                case TUTOR: return "index/index-tutor";
+                case ASSESSOR: return "index/index-assessor";
                 default: return "redirect:/login";
             }
         }
