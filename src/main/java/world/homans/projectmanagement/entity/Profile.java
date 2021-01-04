@@ -30,37 +30,37 @@ public class Profile implements Serializable {
      * 用户年级 User Grade (e.g. "2019级")
      */
     @Column
-    private String year = "N/A";
+    private String year = "";
 
     /**
      * 所属院校 User School (e.g. "软件工程学院")
      */
     @Column
-    private String school = "N/A";
+    private String school = "";
 
     /**
      * 用户专业 User Major (e.g. "软件工程专业")
      */
     @Column
-    private String major = "N/A";
+    private String major = "";
 
     /**
      * 用户职称 User Position (e.g. "副教授")
      */
     @Column
-    private String position = "N/A";
+    private String position = "";
 
     /**
      * 手机号码 Mobile Number
      */
     @Column
-    private String mobile = "N/A";
+    private String mobile = "";
 
     /**
      * 电子邮箱 User Email
      */
     @Column
-    private String email = "N/A";
+    private String email = "";
 
     /**
      * 只有 uid 的构建方法，用于第一次查看用户信息
