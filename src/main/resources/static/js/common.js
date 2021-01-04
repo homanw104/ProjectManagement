@@ -36,5 +36,9 @@ $(document)
         // Dropdown UI (application.html)
         $('#tutors').dropdown({maxSelections:1});
         $('#teammates').dropdown({maxSelections:3});
+
+        // Dropdown UI (profile-edit.html)
+        $('#year').dropdown();
+        $('#gender').dropdown();
     })
 ;
