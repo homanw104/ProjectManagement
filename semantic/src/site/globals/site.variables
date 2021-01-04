@@ -3,7 +3,11 @@
 *******************************/
 
 @primaryColor   : @pink;
-@secondaryColor : @grey;
+@secondaryColor : @black;
+
+@headerFont        : 'Open Sans','Helvetica Neue',"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Hiragino Kaku Gothic Pro",Meiryo,"Noto Sans CJK SC","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
+@pageFont          : font-family: 'Open Sans','Helvetica Neue',"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Hiragino Kaku Gothic Pro",Meiryo,"Noto Sans CJK SC","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
+@importGoogleFonts : false;
 
 /*******************************
 @primaryColor        : @blue;

@@ -15,7 +15,6 @@ public class User implements Serializable {
      * User ID
      */
     @Id
-    // @GeneratedValue // TODO 自定义用户ID生成规则
     private long uid = -1;
 
     /**
@@ -25,7 +24,7 @@ public class User implements Serializable {
     private Status status = Status.ACTIVATED;
 
     /**
-     * ADMIN, STUDENT, TUTOR, ASSESSOR
+     * ADMIN=0, STUDENT=1, TUTOR=2, ASSESSOR=3
      */
     @Column
     private Role role = Role.STUDENT;

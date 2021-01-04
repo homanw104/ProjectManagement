@@ -1,13 +1,8 @@
 package world.homans.projectmanagement.entity;
 
-
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.swing.*;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -21,6 +16,7 @@ public class Project implements Serializable {
      * Project ID
      */
     @Id
+    @GeneratedValue
     private long pid = -1;
 
     /**
@@ -30,28 +26,53 @@ public class Project implements Serializable {
     private Status status = Status.ACTIVATED;
 
     /**
+     * DRAFT, INIT_REVIEWING, INIT_REVIEWED, MIDTERM_REVIEWING,
+     * MIDTERM_REVIEWED, FINAL_REVIEWING, FINAL_REVIEWED, TERMINATED
+     */
+    @Column
+    private Progress progress = Progress.DRAFT;
+
+    /**
+     * Project score
+     */
+    @Column
+    private int score = -1;
+
+    /**
      * Project name
      */
     @Column
     private String name = "N/A";
 
     /**
-     * Project Profile
+     * Project profile
      */
     @Column
-    private String profile = "N/A";
+    private String profile = "";
 
     /**
-     * Project Status（In progress/reviewed/approved）
+     * Tutor (e.g. "20180001")
      */
     @Column
-    private String state = "progress";
+    private String tutors = "";
 
     /**
-     * Project point（？如何把数据类型改成数字）
+     * Teammate (e.g. "10195555888,10185555999")
      */
-    @Id
-    private String point = "-1";
+    @Column
+    private String teammates = "";
+
+    /**
+     * File url
+     */
+    @Column
+    private String fileUrl = "";
+
+    /**
+     * Tutor's comment
+     */
+    @Column
+    private String comment = "";
 
     /**
      * Creation time
@@ -64,10 +85,4 @@ public class Project implements Serializable {
      */
     @Column
     private Date mtime = new Date();
-
-    /**
-     * fileurl
-     */
-    @Column
-    private String fileurl = "N/A";
 }

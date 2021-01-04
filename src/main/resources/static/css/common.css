@@ -1,0 +1,26 @@
+/* common */
+body {
+    background-color: #FFFFFF;
+    font-family:
+            'Open Sans', 'Helvetica Neue', "PingFang SC", "Hiragino Sans GB",
+            "Microsoft YaHei", "Hiragino Kaku Gothic Pro", Meiryo,
+            "Noto Sans CJK SC", "WenQuanYi Micro Hei", Arial, Helvetica, sans-serif;
+}
+
+.main.container {
+    margin-top: 7em;
+}
+
+.ui.footer.segment {
+    margin: 5em 0em 0em;
+    padding: 5em 0em;
+}
+
+.icon {
+    padding-right: 1em;
+}
+
+/* application.html */
+.file.action.input input[type="file"] {
+    display: none;
+}

@@ -24,25 +24,51 @@ public class RegisterController {
     /**
      * 注册界面显示
      * @param model 与该界面绑定的对象集合
-     * @return 登陆界面
+     * @return 如 cookie 不存在或失效则显示登录界面，否则返回主页面
      */
     @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("user", new User());
-        return "register";
+    public String register(@CookieValue(value = "uid", defaultValue = "-1") Long uid, Model model) {
+        User user = userService.getUser(uid);
+        if (user == null) {
+            model.addAttribute("user", new User());
+            return "register";
+        } else {
+            return "redirect:";
+        }
     }
 
     /**
      * 注册表单提交
      * @param user 与该界面绑定的用户对象
+     * @param role String 对象
+     * @param response 返回客户端的 http 对象
      * @return 系统主界面
      */
     @PostMapping("/register")
-    public String register(@ModelAttribute User user, HttpServletResponse response) {
-        // TODO 对提交内容进行校验
+    public String register(@ModelAttribute User user,
+                           @RequestParam("user-uid") String uid,
+                           @RequestParam("user-role") String role,
+                           HttpServletResponse response) {
+        /* 验证 uid 为数字并储存 */
+        for (int i = 0; i < uid.length(); i++)
+            if (!Character.isDigit(uid.charAt(i)))
+                return "redirect:/register?result=UidNotNumeric";
+            else
+                user.setUid(Long.parseLong(uid));
+
+        /* 验证 uid 不唯一 */
+        if (userService.getUser(user.getUid()) != null)
+            return "redirect:/register?result=UidTaken";
+
+        /* 通过 role 字符串设置用户角色 */
+        switch (role) {
+            case "0": user.setRole(Role.ADMIN); break;
+            case "1": user.setRole(Role.STUDENT); break;
+            case "2": user.setRole(Role.TUTOR); break;
+            case "3": user.setRole(Role.ASSESSOR); break;
+        }
 
         /* 设置 mtime ctime 及默认值 */
-        user.setRole(Role.STUDENT);
         user.setStatus(Status.ACTIVATED);
         user.setCtime(new Date());
         user.setMtime(new Date());

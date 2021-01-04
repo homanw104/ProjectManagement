@@ -28,26 +28,38 @@
                 </div>
             </h1>
 
-            <form th:action="@{/register}" th:object="${user}" method="post" class="ui large form">
+            <form th:action="@{/register}" method="post" class="ui large form">
                 <div class="ui stacked segment">
                     <div class="field">
-                        <div class="ui input">
-                            <input type="text" name="uid" placeholder="学工号">
+                        <div class="ui right action input">
+                            <label for="uid"></label>
+                            <input type="text" id="uid" name="user-uid" placeholder="学工号">
+                            <label for="role"></label>
+                            <select class="ui compact selection dropdown" id="role" name="user-role">
+                                <option class="item" value="">你是谁</option>
+                                <option class="item" value="1">是学生</option>
+                                <option class="item" value="2">是导师</option>
+                                <option class="item" value="3">是评审</option>
+                                <option class="item" value="0">管理员</option>
+                            </select>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui input">
-                            <input type="text" name="name" placeholder="姓名">
+                            <label for="name"></label>
+                            <input th:object="${user}" type="text" id="name" name="name" placeholder="姓名">
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui input">
-                            <input type="password" name="password" placeholder="密码">
+                            <label for="password"></label>
+                            <input th:object="${user}" type="password" id="password" name="password" placeholder="密码">
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui input">
-                            <input type="password" name="password-repeat" placeholder="重复密码">
+                            <label for="password-repeat"></label>
+                            <input type="password" id="password-repeat" name="password-repeat" placeholder="重复密码">
                         </div>
                     </div>
                     <input type="submit" value="注册" class="ui fluid large red submit button"/>
@@ -56,7 +68,7 @@
             </form>
 
             <div class="ui message">
-                什么，你是我们的人？(*￣3￣)╭ <a href="login">登录</a>！
+                什么，你来过这里？(*￣3￣)╭ <a href="login">登录</a>！
             </div>
 
         </div>
