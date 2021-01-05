@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import world.homans.projectmanagement.entity.Progress;
 import world.homans.projectmanagement.entity.Project;
 import world.homans.projectmanagement.entity.User;
 import world.homans.projectmanagement.service.ProjectService;
@@ -11,6 +12,8 @@ import world.homans.projectmanagement.service.UserService;
 
 import java.io.File;
 import java.io.IOException;
+
+import static java.lang.Integer.parseInt;
 
 @Controller
 public class ProjectController {
@@ -55,6 +58,9 @@ public class ProjectController {
     public String updateProject(@RequestParam("file") MultipartFile file,
                                 @PathVariable("pid") Long pid,
                                 @ModelAttribute Project project) {
+        if (projectService.getProject(pid) == null)
+            return "redirect:/management?result=ProjectNotFound";
+
         if (file.isEmpty()) {
             return "redirect:/project/" + pid.toString() + "?result=EmptyFile";
         } else try {
@@ -89,13 +95,74 @@ public class ProjectController {
     }
 
     /**
+     * 评论表单提交
+     * @param pid 项目编号 pid
+     * @return 管理界面
+     */
+    @PostMapping("/comment/{pid}")
+    public String commentProject(@PathVariable(value = "pid") Long pid,
+                                 @RequestParam(value = "project-comment") String comment) {
+        if (projectService.getProject(pid) == null)
+            return "redirect:/management?result=ProjectNotFound";
+
+        Project baseProject = projectService.getProject(pid);
+        baseProject.setComment(comment);
+        projectService.updateProject(pid, baseProject);
+        return "redirect:/management?result=CommentSuccess";
+    }
+
+    /**
+     * 评分表单提交
+     * @param pid 项目编号 pid
+     * @return 管理界面
+     */
+    @PostMapping("/evaluate/{pid}")
+    public String evaluateProject(@PathVariable(value = "pid") Long pid,
+                                  @RequestParam(value = "project-score") String score) {
+        if (projectService.getProject(pid) == null)
+            return "redirect:/management?result=ProjectNotFound";
+
+        Project baseProject = projectService.getProject(pid);
+        try {
+            int newScore = Integer.parseInt(score);
+            baseProject.setScore(newScore);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return "redirect:/management?result=ScoreNonNumeric";
+        }
+        projectService.updateProject(pid, baseProject);
+        return "redirect:/management?result=EvaluateSuccess";
+    }
+
+    /**
+     * 审批进入下一阶段
+     * @param pid 项目 pid
+     * @return 管理界面
+     */
+    @GetMapping("/approve/{pid}")
+    public String approveProject(@PathVariable(value = "pid") Long pid) {
+        Project project = projectService.getProject(pid);
+        if (project == null) return "redirect:/management?result=ProjectNotFound";
+
+        switch (project.getProgress()) {
+            case DRAFT: case INIT_REVIEWING: project.setProgress(Progress.INIT_REVIEWED); break;
+            case INIT_REVIEWED: case MIDTERM_REVIEWING: project.setProgress(Progress.MIDTERM_REVIEWED); break;
+            case MIDTERM_REVIEWED: case FINAL_REVIEWING: project.setProgress(Progress.FINAL_REVIEWED); break;
+            case TERMINATED: project.setProgress(Progress.DRAFT); break;
+        }
+        projectService.updateProject(project.getPid(), project);
+        return "redirect:/management?result=ApproveSuccess";
+    }
+
+    /**
      * 删除项目
      * @param pid 项目 pid
-     * @return 返回管理界面
+     * @return 管理界面
      */
     @GetMapping("/delete/{pid}")
     public String deleteProject(@PathVariable(value = "pid") Long pid) {
-        if (projectService.getProject(pid) == null) return "redirect:/management?result=FailToFindProject";
+        if (projectService.getProject(pid) == null)
+            return "redirect:/management?result=ProjectNotFound";
         projectService.deleteProject(pid);
         return "redirect:/management?result=DeleteSuccess";
     }

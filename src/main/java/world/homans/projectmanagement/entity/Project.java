@@ -36,7 +36,7 @@ public class Project implements Serializable {
      * 项目评分 Project Score
      */
     @Column
-    private int score = -1;
+    private int score = 0;
 
     /**
      * 项目名字 Project Name

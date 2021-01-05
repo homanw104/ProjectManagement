@@ -49,9 +49,23 @@
                         <div class="ui button" id="file-button">选择文件</div>
                     </div>
                 </div>
+                <a href="management" th:href="@{/management}"><button type="button" class="ui right floated green button">取消修改</button></a>
                 <input type="submit" value="确认提交" class="ui right floated blue submit button"/>
-                <a href="/management" th:href="@{/management}"><button class="ui right floated green button">取消修改</button></a>
             </form>
+
+            <script>
+                window.onload = () => {
+                    let param = new URLSearchParams(window.location.search);
+                    if (param.has("result") && param.get("result") == "EmptyFile") {
+                        alert("Empty file!");
+                    } else if (param.has("result") && param.get("result") == "FailedToCreateDir") {
+                        alert("Failed to create dir on server.");
+                    } else if (param.has("result") && param.get("result") == "Failed") {
+                        alert("Failed!");
+                    }
+                }
+            </script>
+
         </div>
     </div>
 </div>

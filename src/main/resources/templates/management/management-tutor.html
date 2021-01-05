@@ -30,7 +30,7 @@
         <div class="ui twelve wide column">
 
             <h1 class="ui header">项目管理</h1>
-            <div th:each="project:${projects}"class="ui container">
+            <div th:each="project:${projects}" class="ui container">
 
                 <div class="ui top attached block header">
                     <div class="ui middle aligned two column centered grid">
@@ -62,141 +62,16 @@
                     </div>
                 </div>
                 <div class="ui project detail attached segment">
-                    <div class="ui comments">
-                        <div class="comment">
-                            <a class="avatar"><img src="/img/head1.png" th:src="@{/img/head_tutor.png}" alt="Avatar"></a>
-                            <div class="content">
-                                <a class="author">导师评论</a>
-                                <div class="metadata">
-                                    <div class="rating" th:if="${project.score}==-1">
-                                        <i class="percent icon"></i>暂无评分
-                                    </div>
-                                    <div class="rating" th:unless="${project.score}==-1" th:text="${project.score} + ' 分'">
-                                        <i class="percent icon"></i>
-                                    </div>
-                                </div>
-                                <div class="text" th:if="${project.comment}==''" th:text="'暂无评论'"></div>
-                                <div class="text" th:unless="${project.comment}==''" th:text="${project.comment}"></div>
-                            </div>
+                    <form th:action="@{/comment/{pid}(pid=${project.pid})}" method="post">
+                        <div class="ui fluid action input">
+                            <label for="comment"></label>
+                            <input th:value="${project.comment}" type="text"
+                                   id="comment" name="project-comment" placeholder="评论一下～"/>
+                            <button type="submit" class="ui button">提交评论</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
-                <div class="ui project detail three bottom attached steps">
-
-                    <div th:if="${project.progress.name()}=='DRAFT'" class="active step">
-                        <i class="lightbulb icon"></i>
-                        <div class="content">
-                            <div class="title">立项</div>
-                            <div class="description">立项初审阶段</div>
-                        </div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='DRAFT'" class="disabled step">
-                        <i class="wrench icon"></i>
-                        <div class="content">
-                            <div class="title">中期</div>
-                            <div class="description">中期答辩阶段</div>
-                        </div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='DRAFT'" class="disabled step">
-                        <i class="flag icon"></i>
-                        <div class="content">
-                            <div class="title">终期</div>
-                            <div class="description">结项终审打分</div>
-                        </div>
-                    </div>
-
-                    <div th:if="${project.progress.name()}=='INIT_REVIEWING'" class="active step">
-                        <i class="lightbulb icon"></i>
-                        <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='INIT_REVIEWING'" class="disabled step">
-                        <i class="wrench icon"></i>
-                        <div class="content"><div class="title">中期</div><div class="description">中期答辩阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='INIT_REVIEWING'" class="disabled step">
-                        <i class="flag icon"></i>
-                        <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
-                    </div>
-
-                    <div th:if="${project.progress.name()}=='INIT_REVIEWED'" class="active step">
-                        <i class="lightbulb icon"></i>
-                        <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='INIT_REVIEWED'" class="disabled step">
-                        <i class="wrench icon"></i>
-                        <div class="content"><div class="title">中期</div><div class="description">中期答辩阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='INIT_REVIEWED'" class="disabled step">
-                        <i class="flag icon"></i>
-                        <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
-                    </div>
-
-                    <div th:if="${project.progress.name()}=='MIDTERM_REVIEWING'" class="step">
-                        <i class="green check circle outline icon"></i>
-                        <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='MIDTERM_REVIEWING'" class="active step">
-                        <i class="wrench icon"></i>
-                        <div class="content"><div class="title">中期</div><div class="description">中期答辩阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='MIDTERM_REVIEWING'" class="disabled step">
-                        <i class="flag icon"></i>
-                        <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
-                    </div>
-
-                    <div th:if="${project.progress.name()}=='MIDTERM_REVIEWED'" class="step">
-                        <i class="green check circle outline icon"></i>
-                        <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='MIDTERM_REVIEWED'" class="active step">
-                        <i class="wrench icon"></i>
-                        <div class="content"><div class="title">中期</div><div class="description">中期答辩阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='MIDTERM_REVIEWED'" class="disabled step">
-                        <i class="flag icon"></i>
-                        <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
-                    </div>
-
-                    <div th:if="${project.progress.name()}=='FINAL_REVIEWING'" class="step">
-                        <i class="green check circle outline icon"></i>
-                        <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='FINAL_REVIEWING'" class="step">
-                        <i class="green check circle outline icon"></i>
-                        <div class="content"><div class="title">中期</div><div class="description">中期答辩阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='FINAL_REVIEWING'" class="active step">
-                        <i class="flag icon"></i>
-                        <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
-                    </div>
-
-                    <div th:if="${project.progress.name()}=='FINAL_REVIEWED'" class="step">
-                        <i class="green check circle outline icon"></i>
-                        <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='FINAL_REVIEWED'" class="step">
-                        <i class="green check circle outline icon"></i>
-                        <div class="content"><div class="title">中期</div><div class="description">中期答辩阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='FINAL_REVIEWED'" class="active step">
-                        <i class="flag icon"></i>
-                        <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
-                    </div>
-
-                    <div th:if="${project.progress.name()}=='TERMINATED'" class="disabled step">
-                        <i class="close icon"></i>
-                        <div class="content"><div class="title">立项</div><div class="description">立项初审阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='TERMINATED'" class="disabled step">
-                        <i class="close icon"></i>
-                        <div class="content"><div class="title">中期</div><div class="description">中期答辩阶段</div></div>
-                    </div>
-                    <div th:if="${project.progress.name()}=='TERMINATED'" class="disabled step">
-                        <i class="close icon"></i>
-                        <div class="content"><div class="title">终期</div><div class="description">结项终审打分</div></div>
-                    </div>
-                </div>
-                <br><br>
+                <div th:replace="common::common_steps"></div><br><br>
             </div>
 
         </div>
