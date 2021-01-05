@@ -155,6 +155,21 @@ public class ProjectController {
     }
 
     /**
+     * 拒绝项目
+     * @param pid 项目 pid
+     * @return 管理界面
+     */
+    @GetMapping("/reject/{pid}")
+    public String rejectProject(@PathVariable(value = "pid") Long pid) {
+        Project project = projectService.getProject(pid);
+        if (project == null) return "redirect:/management?result=ProjectNotFound";
+
+        project.setProgress(Progress.TERMINATED);
+        projectService.updateProject(pid, project);
+        return "redirect:/management?result=ProjectRejected";
+    }
+
+    /**
      * 删除项目
      * @param pid 项目 pid
      * @return 管理界面

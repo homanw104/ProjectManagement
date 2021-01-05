@@ -62,14 +62,23 @@
                     </div>
                 </div>
                 <div class="ui project detail attached segment">
-                    <form th:action="@{/evaluate/{pid}(pid=${project.pid})}" method="post">
-                        <div class="ui fluid action input">
-                            <label for="comment"></label>
-                            <input th:value="${project.score}" type="text"
-                                   id="comment" name="project-score" placeholder="给个分呗～"/>
-                            <button type="submit" class="ui button">提交评分</button>
+                    <div class="ui grid">
+                        <div class="ui thirteen wide right floated column">
+                            <form th:action="@{/evaluate/{pid}(pid=${project.pid})}" method="post">
+                                <div class="ui fluid action input">
+                                    <label for="comment"></label>
+                                    <input th:value="${project.score}" type="text"
+                                           id="comment" name="project-score" placeholder="给个分呗～"/>
+                                    <button type="submit" class="ui button">提交评分</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                        <div class="ui three wide right floated column">
+                            <a th:href="@{/download?path={path}(path=${project.fileUrl})}">
+                                <button type="button" class="ui green right floated button">下载附件</button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div th:replace="common::common_steps"></div><br><br>
             </div>
