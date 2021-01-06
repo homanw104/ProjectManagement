@@ -5,7 +5,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import world.homans.projectmanagement.entity.Project;
 import world.homans.projectmanagement.repository.ProjectRepository;
-import world.homans.projectmanagement.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Optional;

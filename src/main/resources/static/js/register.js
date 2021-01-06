@@ -44,6 +44,7 @@ $(document)
             })
         ;
 
+        // User role selection
         $('#role')
             .dropdown()
         ;

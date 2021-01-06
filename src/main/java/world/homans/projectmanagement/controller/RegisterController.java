@@ -12,6 +12,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
+/**
+ * 注册及注册表单提交控制
+ */
 @Controller
 public class RegisterController {
 

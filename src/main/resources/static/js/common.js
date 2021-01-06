@@ -27,7 +27,7 @@ $(document)
             $("#file").click();
         });
 
-        // Show file name (application.html)
+        // File name display (application.html)
         $("#file").change(function () {
             let files = $("#file").get(0).files;
             $("#file-name").val(files[0].name);

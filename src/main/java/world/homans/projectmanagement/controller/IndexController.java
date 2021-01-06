@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import world.homans.projectmanagement.entity.User;
 import world.homans.projectmanagement.service.UserService;
 
+/**
+ * 主页跳转控制
+ */
 @Controller
 public class IndexController {
 

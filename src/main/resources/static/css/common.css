@@ -24,3 +24,12 @@ body {
 .file.action.input input[type="file"] {
     display: none;
 }
+
+/* management.html */
+.attached.steps {
+    margin-bottom: 1em !important;
+}
+
+.floated.button {
+    margin: 0.1em;
+}

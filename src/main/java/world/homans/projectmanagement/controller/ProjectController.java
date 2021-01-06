@@ -13,8 +13,6 @@ import world.homans.projectmanagement.service.UserService;
 import java.io.File;
 import java.io.IOException;
 
-import static java.lang.Integer.parseInt;
-
 @Controller
 public class ProjectController {
 

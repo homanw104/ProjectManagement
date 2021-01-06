@@ -12,6 +12,9 @@ import world.homans.projectmanagement.service.UserService;
 
 import java.util.Date;
 
+/**
+ * 用户个人信息及表单提交控制
+ */
 @Controller
 public class ProfileController {
 
@@ -27,7 +30,7 @@ public class ProfileController {
      * 显示用户信息
      * @param uid  读取用户端储存的 uid ，默认值 -1
      * @param model 与页面绑定的对象集合
-     * @return 申请界面
+     * @return 用户信息显示界面
      */
     @GetMapping("/profile")
     public String profile(@CookieValue(value = "uid", defaultValue = "-1") Long uid, Model model) {
@@ -50,7 +53,7 @@ public class ProfileController {
      * 修改个人信息
      * @param uid  读取用户端储存的 uid ，默认值 -1
      * @param model 与页面绑定的对象集合
-     * @return 申请界面
+     * @return 修改个人信息显示界面
      */
     @GetMapping("/profile/edit")
     public String profileEdit(@CookieValue(value = "uid", defaultValue = "-1") Long uid, Model model) {
@@ -66,6 +69,12 @@ public class ProfileController {
         return "profile-edit";
     }
 
+    /**
+     * 个人信息修改表单提交
+     * @param profile 与界面绑定的个人信息对象
+     * @param gender 性别选择器的数据
+     * @return 个人信息显示界面
+     */
     @PostMapping("/profile/edit")
     public String profileUpdate(@ModelAttribute Profile profile,
                                 @RequestParam("profile-gender") String gender) {

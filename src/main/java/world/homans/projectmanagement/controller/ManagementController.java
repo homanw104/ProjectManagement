@@ -11,6 +11,9 @@ import world.homans.projectmanagement.service.UserService;
 
 import java.util.ArrayList;
 
+/**
+ * 项目管理界面控制
+ */
 @Controller
 public class ManagementController {
 

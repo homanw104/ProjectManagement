@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
+/**
+ * 文件下载控制
+ */
 @Controller
 public class DownloadController {
 
