@@ -31,8 +31,14 @@
             <div th:replace="common::common_menu(1)"></div>
         </div>
         <div class="ui twelve wide column">
-            <h1 th:text="${user.name} + '的个人信息'" class="ui header"></h1>
-            <h1> </h1>
+
+            <div class="ui one column grid">
+                <div class="computer only tablet only column">
+                    <h1 th:text="${user.name} + '的信息'" class="ui computer only header"></h1>
+                </div>
+                <div class="container column"></div>
+            </div>
+            
             <div class="ui stackable two column grid">
                 <div class="ui column">
                     <p class="ui header"><i class="user icon"></i>注册信息</p>

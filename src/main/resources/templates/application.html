@@ -31,9 +31,13 @@
             <div th:replace="common::common_menu(2)"></div>
         </div>
         <div class="ui twelve wide column">
-            <h1 class="ui header">
-                项目申报
-            </h1>
+
+            <div class="ui one column grid">
+                <div class="computer only tablet only column">
+                    <h1 class="ui computer only header">项目申报</h1>
+                </div>
+                <div class="container column"></div>
+            </div>
             <form class="ui form" th:action="@{/application}" method="post" enctype="multipart/form-data">
                 <div class="field">
                     <label for="name">项目名称</label>

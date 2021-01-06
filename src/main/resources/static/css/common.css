@@ -16,7 +16,7 @@ body {
     padding: 5em 0em;
 }
 
-.ecnu.icon {
+.ecnu.icon, .logout.icon {
     padding-right: 1em;
 }
 

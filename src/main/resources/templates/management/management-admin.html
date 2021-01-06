@@ -32,7 +32,12 @@
         </div>
         <div class="ui twelve wide column">
 
-            <h1 class="ui header">项目管理</h1>
+            <div class="ui one column grid">
+                <div class="computer only tablet only column">
+                    <h1 class="ui computer only header">项目管理</h1>
+                </div>
+                <div class="container column"></div>
+            </div>
             <div th:each="project:${projects}"class="ui container">
 
             <div class="ui top attached block header">

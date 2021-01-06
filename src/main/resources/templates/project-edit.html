@@ -31,9 +31,13 @@
             <div th:replace="common::common_menu(0)"></div>
         </div>
         <div class="ui twelve wide column">
-            <h1 class="ui header">
-                修改项目信息
-            </h1>
+
+            <div class="ui one column grid">
+                <div class="computer only tablet only column">
+                    <h1 class="ui computer only header">修改项目信息</h1>
+                </div>
+                <div class="container column"></div>
+            </div>
             <form class="ui form" th:action="@{/project/{pid}(pid=${project.pid})}" method="post" enctype="multipart/form-data">
                 <div class="field">
                     <label for="name">项目名称</label>

@@ -32,8 +32,12 @@
         </div>
         <div class="ui twelve wide column">
 
-            <h1 th:text="'正在编辑 ' + ${user.name} + ' 的个人信息'" class="ui header"></h1>
-            <h1> </h1>
+            <div class="ui one column grid">
+                <div class="computer only tablet only column">
+                    <h1 th:text="'正在编辑 ' + ${user.name} + ' 的个人信息'" class="ui computer only header"></h1>
+                </div>
+                <div class="container column"></div>
+            </div>
 
             <form class="ui form" th:action="@{/profile/edit}" method="post">
                 <div class="two fields">

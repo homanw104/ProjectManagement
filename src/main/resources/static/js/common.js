@@ -45,14 +45,32 @@ $(document)
         $('.project.detail').transition();
         $('.mid.attached.segment').attr('class', 'bottom attached ui segment');
 
+        // Bug fix for step display on mobile
+        setTimeout(function () {
+            $('.attached.steps').attr('style', 'display: none');
+        }, 400);
+
         // Transition (management-xxx.html)
         $('.detail.button').click(function () {
-            if ($(this).parent().parent().parent().next().attr('class') === 'ui attached segment')
-                $(this).parent().parent().parent().next().attr('class', 'bottom attached ui segment');
-            else
-                $(this).parent().parent().parent().next().attr('class', 'ui attached segment');
-            $(this).parent().parent().parent().next().next().transition('fade down');
-            $(this).parent().parent().parent().next().next().next().transition('fade down');
+            let card_header_div = $(this).parent().parent().parent();
+            if (card_header_div.next().attr('class') === 'ui attached segment') {
+
+                // Show round corner when steps' hidden
+                card_header_div.next().attr('class', 'bottom attached ui segment');
+
+                // Bug fix for step display on mobile
+                setTimeout(function () {
+                    card_header_div.next().next().next().attr('style', 'display: none');
+                }, 400);
+
+            } else {
+
+                // Show squared corner when steps' hidden
+                card_header_div.next().attr('class', 'ui attached segment');
+
+            }
+            card_header_div.next().next().transition('fade down');
+            card_header_div.next().next().next().transition('fade down');
         });
     })
 ;
