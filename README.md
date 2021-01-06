@@ -93,6 +93,18 @@ Reference: <https://semantic-ui.com/introduction/build-tools.html>
 
 
 
+## Responsive Design
+
+手机是现今我们离不开的工具，该项目针对移动设备做了显示优化。以下展示了手机端部分显示截图。
+
+![img_8.png](assets/img_8.png)
+
+![img_9.png](assets/img_9.png)
+
+![img_10.png](assets/img_10.png)
+
+
+
 ## GitHub
 
 该项目在通过存储在 GitHub 仓库来与组员进行协作， commit 记录完整地记录了我们的项目开发过程。
@@ -122,3 +134,92 @@ This project is licenced under GPL-3.
 Crafted with dove by Homan & Temper.
 
 Date: Jan 2021
+
+
+
+## Appendix
+
+Project structure.
+
+```txt
+./src/main
+├── java
+│   └── world
+│       └── homans
+│           └── projectmanagement
+│               ├── controller
+│               │     ├── ApplicationController.java
+│               │     ├── DownloadController.java
+│               │     ├── IndexController.java
+│               │     ├── LoginController.java
+│               │     ├── LogoutController.java
+│               │     ├── ManagementController.java
+│               │     ├── ProfileController.java
+│               │     ├── ProjectController.java
+│               │     └── RegisterController.java
+│               ├── entity
+│               │     ├── Gender.java        性别Enum类
+│               │     ├── Profile.java       用户具体信息实体类
+│               │     ├── Progress.java      项目进度Enum类
+│               │     ├── Project.java       项目信息实体类
+│               │     ├── Role.java          用户角色Enum类
+│               │     ├── Status.java        用户账户情况Enum类
+│               │     └── User.java          用户关键信息实体类
+│               ├── repository
+│               │     ├── ProfileRepository.java  用户详细信息仓库
+│               │     ├── ProjectRepository.java  项目信息仓库
+│               │     └── UserRepository.java     用户基础信息类
+│               ├── security
+│               │     └── SecurityConfig.java     Spring Boot安全设置
+│               ├── service
+│               │   ├── ProfileService.java   用户详细信息增删改查服务
+│               │   ├── ProjectService.java   项目信息增删改查服务
+│               │   └── UserService.java      用户基本信息增删改查服务
+│               └── ProjectManagementApplication.java
+└── resources
+    ├── application.properties
+    ├── static
+    │     ├── css
+    │     │     ├── common.css
+    │     │     ├── login.css
+    │     │     └── register.css
+    │     ├── dist (semantic-ui resources)
+    │     │     ├── components ...
+    │     │     ├── semantic.css
+    │     │     ├── semantic.js
+    │     │     ├── semantic.min.css
+    │     │     ├── semantic.min.js
+    │     │     └── themes
+    │     │         ├── basic ...
+    │     │         └── default ...
+    │     ├── img
+    │     │     ├── head_chicken.jpg
+    │     │     ├── head_tutor.png
+    │     │     ├── head_user.jpg
+    │     │     ├── icon.png
+    │     │     ├── login.jpg
+    │     │     └── logo.jpg
+    │     └── js
+    │         ├── common.js
+    │         ├── jquery-3.5.1.min.js
+    │         ├── login.js
+    │         └── register.js
+    └── templates
+        ├── index
+        │     ├── index-admin.html
+        │     ├── index-assessor.html
+        │     ├── index-student.html
+        │     └── index-tutor.html
+        ├── management
+        │     ├── management-admin.html
+        │     ├── management-assessor.html
+        │     ├── management-student.html
+        │     └── management-tutor.html
+        ├── application.html
+        ├── common.html
+        ├── login.html
+        ├── profile-edit.html
+        ├── profile.html
+        ├── project-edit.html
+        └── register.html
+```
