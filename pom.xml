@@ -11,7 +11,7 @@
     </parent>
     <groupId>world.homans</groupId>
     <artifactId>project-management</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.4-SNAPSHOT</version>
     <name>ProjectManagement</name>
     <description>Project Management Platform</description>
 

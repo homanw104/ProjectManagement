@@ -5,12 +5,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import world.homans.projectmanagement.entity.Project;
 import world.homans.projectmanagement.repository.ProjectRepository;
+import world.homans.projectmanagement.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 /**
  * 项目表增删改查服务
- * author: Temper
+ * author: Temper, Homan
  * since: 01/03/2021
  */
 @Service
@@ -34,7 +36,7 @@ public class ProjectService {
      * 通过 pid 删除项目
      * @param pid 项目 pid
      */
-    public void updateProject(Long pid) {
+    public void deleteProject(Long pid) {
         projectRepository.deleteById(pid);
     }
 
@@ -64,7 +66,27 @@ public class ProjectService {
      * @param pageSize 单页条目数
      * @return Page对象
      */
-    public Page<Project> pageQuery(int pageNum, int pageSize){
+    public Page<Project> pageQuery(int pageNum, int pageSize) {
         return projectRepository.findAll(PageRequest.of(pageNum - 1, pageSize));
+    }
+
+    /**
+     * 通过用户 uid 返回相关的 projects 列表
+     * @param uid 用户 uid
+     * @return 项目列表 ArrayList
+     */
+    public ArrayList<Project> listProjects(Long uid) {
+        ArrayList<Project> projects = new ArrayList<>();
+        projects.addAll(projectRepository.findAllByTeammatesContains(String.valueOf(uid)));
+        projects.addAll(projectRepository.findAllByTutorsContains(String.valueOf(uid)));
+        return projects;
+    }
+
+    /**
+     * 返回所有项目列表
+     * @return 项目列表 ArrayList
+     */
+    public ArrayList<Project> listProjects() {
+        return projectRepository.findAll();
     }
 }

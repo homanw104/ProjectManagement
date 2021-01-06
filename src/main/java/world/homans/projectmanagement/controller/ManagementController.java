@@ -1,6 +1,5 @@
 package world.homans.projectmanagement.controller;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -32,13 +31,32 @@ public class ManagementController {
     @GetMapping("/management")
     public String management(@CookieValue(value = "uid", defaultValue = "-1") Long uid, Model model){
         User user = userService.getUser(uid);
-        model.addAttribute("user",user);
-        Project project = new Project();
-        ArrayList<Project> projects = new ArrayList<>();
-        for (int i = 0; i < 6; i++)  {
-            projects.add(project);
+        if (user == null) return "redirect:/login";
+
+        model.addAttribute("user", user);
+        ArrayList<Project> projects;
+        switch (user.getRole()) {
+            /* 管理员 返回所有项目 */
+            case ADMIN:
+                projects = projectService.listProjects();
+                model.addAttribute("projects", projects);
+                return "management/management-admin";
+            /* 学生 返回相关项目 */
+            case STUDENT:
+                projects = projectService.listProjects(uid);
+                model.addAttribute("projects", projects);
+                return "management/management-student";
+            /* 导师 返回相关项目 */
+            case TUTOR:
+                projects = projectService.listProjects(uid);
+                model.addAttribute("projects", projects);
+                return "management/management-tutor";
+            /* 评审 返回所有项目 */
+            case ASSESSOR:
+                projects = projectService.listProjects();
+                model.addAttribute("projects", projects);
+                return "management/management-assessor";
+            default: return "redirect:/login";
         }
-        model.addAttribute("projects",projects);
-        return "management";
     }
 }

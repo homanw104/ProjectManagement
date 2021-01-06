@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    public User findByName(String name);
     public ArrayList<User> findAll();
     public ArrayList<User> findAllByRole(Role role);
 }

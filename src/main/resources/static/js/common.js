@@ -36,5 +36,23 @@ $(document)
         // Dropdown UI (application.html)
         $('#tutors').dropdown({maxSelections:1});
         $('#teammates').dropdown({maxSelections:3});
+
+        // Dropdown UI (profile-edit.html)
+        $('#year').dropdown();
+        $('#gender').dropdown();
+
+        // Transition initialization (management-xxx.html)
+        $('.project.detail').transition();
+        $('.mid.attached.segment').attr('class', 'bottom attached ui segment');
+
+        // Transition (management-xxx.html)
+        $('.detail.button').click(function () {
+            if ($(this).parent().parent().parent().next().attr('class') === 'ui attached segment')
+                $(this).parent().parent().parent().next().attr('class', 'bottom attached ui segment');
+            else
+                $(this).parent().parent().parent().next().attr('class', 'ui attached segment');
+            $(this).parent().parent().parent().next().next().transition('fade down');
+            $(this).parent().parent().parent().next().next().next().transition('fade down');
+        });
     })
 ;

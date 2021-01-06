@@ -33,6 +33,8 @@ public class ApplicationController {
     @GetMapping("/application")
     public String application(@CookieValue(value = "uid", defaultValue = "-1") Long uid, Model model) {
         User user = userService.getUser(uid);
+        if (user == null) return "redirect:/login";
+
         Project project = new Project();
         ArrayList<User> students = userService.listStudents();
         ArrayList<User> tutors = userService.listTutors();
@@ -75,7 +77,7 @@ public class ApplicationController {
             /* 保存文件路径并保存项目信息 */
             project.setFileUrl(destFile.getAbsolutePath());
             projectService.saveProject(project);
-            return "redirect:/application?result=Success";
+            return "redirect:/management?result=Success";
         } catch (IOException e) {
             e.printStackTrace();
         }
