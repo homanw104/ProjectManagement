@@ -1,0 +1,6 @@
+world.homans.projectmanagement
+world.homans.projectmanagement.controller
+world.homans.projectmanagement.entity
+world.homans.projectmanagement.repository
+world.homans.projectmanagement.security
+world.homans.projectmanagement.service
