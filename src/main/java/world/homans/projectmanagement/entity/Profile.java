@@ -1,6 +1,5 @@
 package world.homans.projectmanagement.entity;
 
-
 import lombok.Data;
 
 import javax.persistence.Column;

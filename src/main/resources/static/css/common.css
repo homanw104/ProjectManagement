@@ -16,11 +16,20 @@ body {
     padding: 5em 0em;
 }
 
-.icon {
+.ecnu.icon, .logout.icon {
     padding-right: 1em;
 }
 
 /* application.html */
 .file.action.input input[type="file"] {
     display: none;
+}
+
+/* management.html */
+.attached.steps {
+    margin-bottom: 1em !important;
+}
+
+.floated.button {
+    margin: 0.1em;
 }

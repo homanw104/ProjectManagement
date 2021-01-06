@@ -8,6 +8,9 @@ import world.homans.projectmanagement.service.UserService;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 登出控制
+ */
 @Controller
 public class LogoutController {
 

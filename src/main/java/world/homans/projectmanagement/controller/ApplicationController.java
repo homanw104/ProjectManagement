@@ -13,6 +13,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * 项目申请相关控制
+ */
 @Controller
 public class ApplicationController {
 
