@@ -25,7 +25,7 @@
     <div th:fragment="common_header" class="ui fixed large borderless menu">
         <div class="ui container">
             <div class="header item">
-                <img class="icon" src="/ProjectManagement/static/img/logo.jpg" th:src="@{/img/logo.jpg}" alt="Logo">
+                <img class="ecnu icon" src="/ProjectManagement/static/img/logo.jpg" th:src="@{/img/logo.jpg}" alt="Logo">
                 双创项目管理
             </div>
             <a href="/" class="header item">
@@ -63,7 +63,11 @@
                 <!-- 通用左侧菜单 menu 片段， index 为传递进来的参数 -->
                 <div th:fragment="common_menu(index)" class="ui container">
                     <div class="ui fluid card">
-                        <div class="ui centered image"><img src="/ProjectManagement/static/img/head_tutor.png" th:src="@{/img/head_user.jpg}" alt="Avatar"></div>
+                        <div class="ui centered image">
+                            <img src="/ProjectManagement/static/img/head_tutor.png"
+                                 th:src="@{/img/head_user.jpg}"
+                                 alt="Avatar">
+                        </div>
                         <div class="content">
                             <div th:text="${user.name}" class="header">用户名字</div>
                             <div class="meta"><span th:text="${user.uid}" class="uid">学工号</span></div>
