@@ -6,25 +6,38 @@ A J2EE project using **Springboot**, **Thymeleaf**, **Semantic UI** and **MySQL*
 
 Demo: [project.homans.world](https://project.homans.world)
 
+服务器部署在 Google Cloud Platform 香港节点，加载速度视网络情况。
 
 
-## Main Pages
+
+## Pages
 
 1. Login
 
+![img_0.png](assets/img_0.png)
+
 2. Register
+
+![img_1.png](assets/img_1.png)
 
 3. Homepage
 
+![img_2.png](assets/img_2.png)
+
 4. Personal Profile
+
+![img_3.png](assets/img_3.png)
 
 5. Project Application
 
+![img_4.png](assets/img_4.png)
+
 6. Project Management
 
+![img_5.png](assets/img_5.png)
 
 
-## Main Features
+## Features
 
 为测试项目，为各个身份设置一个测试账号（账号同密码）：
 
@@ -54,41 +67,58 @@ Demo: [project.homans.world](https://project.homans.world)
 
 Semantic UI 提供了丰富的组件和可以自定义主题的功能，同时我们通过使用 Semantic UI 实现了在移动端使用的响应式设计。
 
-### Build
+### 编译样式文件
 
-要使用 Semantic UI 需要通过 npm 安装社区版的 Fomantic UI。项目中已经编译好的 css / js 文件存放在 `/src/main/resources/static/dist/` 下。如需修改 UI 风格也可自行修改 `/semantic` 中的配置文件进行编译。
+要使用 Semantic UI ，先需通过 npm 安装社区版的 Fomantic UI。项目中有已编译好的 css / js 文件位于 `/src/main/resources/static/dist/` 目录。如需修改 UI 风格，可以自行修改 `/semantic` 中的配置文件进行编译。具体方法如下：
+
+* To build Semantic UI asset files, run `gulp build` under `/semantic`.
+* To change output path, edit `/semantic.json`.
+* Output folder is currently set to `/src/main/resources/static/dist/`.
 
 Reference: <https://semantic-ui.com/introduction/build-tools.html>
-
-* To build Semantic UI asset files run `gulp build` under `/semantic`.
-* To change output path, edit `/semantic.json`.
-* The output folder is currently set to `/src/main/resources/static/dist/`.
 
 
 
 ## Thymeleaf
 
-通过使用 Thymeleaf 模板技术，我们可以实现前端设计与后端开发的分离。相对于 jsp 开发，Thymeleaf 模板文件更加直观，能够解决通过 jsp 开发时需要启动 Tomcat 才能显示页面的问题。同时，通过 Thymeleaf 引用模板 html 中的片段可以大大简化其它页面的文件大小。图为在 IDEA 中直接通过浏览器打开 common.html 模板的效果。通过 Springboot 启动后，用户名字和学工号等信息会被 Thymeleaf 模板引擎进行相应替换。
+通过使用 Thymeleaf 模板技术，我们可以实现前端设计与后端开发的分离。相对于 JSP ， Thymeleaf 模板文件更加直观，能够解决通过 JSP 开发时需要启动 Tomcat 才能显示页面的问题。同时，通过 Thymeleaf 引用模板 html 中的片段可以大大简化其它页面的文件大小。模板文件位于 `/src/main/resources/templates` 。
 
-![img_0.png](assets/img_0.png)
-![img_2.png](assets/img_2.png)
+图为在 IDEA 中直接通过浏览器打开 `common.html` 模板的效果。通过 Springboot 启动后，用户名字和学工号等信息会被 Thymeleaf 模板引擎进行相应替换。
+
+![img_6.png](assets/img_6.png)
+
+模板文件的部分代码：
+
+![img_7.png](assets/img_7.png)
 
 
 
-## GitHub Link
+## GitHub
 
-https://github.com/homanw104/ProjectManagement
+该项目在通过存储在 GitHub 仓库来与组员进行协作， commit 记录完整地记录了我们的项目开发过程。
+
+Link: <https://github.com/homanw104/ProjectManagement>
 
 
 
 ## Authors
 
-* 王皜民：前端设计与搭建、后端数据库、服务器部署等全栈开发
-* 苏建锐：项目需求分析、前端搭建、后端数据库对接、实验报告的撰写等
-* 林颂家：项目需求分析、数据库表格设计等
+* 王皜民：前端设计与搭建、后端数据库、服务器部署等全栈开发。
+* 苏建锐：项目需求分析、前端搭建、后端数据库对接、实验报告的撰写等。
+* 林颂家：项目需求分析、数据库表格设计等。
 
 
 
 ## Licence
 
 This project is licenced under GPL-3.
+
+
+
+## Details
+
+关于更多技术细节，可以查看项目报告ヾ(•ω•`)o
+
+Crafted with dove by Homan & Temper.
+
+Date: Jan 2021
