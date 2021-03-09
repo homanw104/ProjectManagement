@@ -64,7 +64,7 @@ public class UserService {
      * 获取用户列表
      * @param pageNum 页号
      * @param pageSize 单页条目数
-     * @return Page 对象
+     * @return Page 对  象
      */
     public Page<User> pageQuery(int pageNum, int pageSize) {
         return userRepository.findAll(PageRequest.of(pageNum - 1, pageSize));
