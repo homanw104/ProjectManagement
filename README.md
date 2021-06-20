@@ -1,12 +1,6 @@
 # Project Management Platform
 
-## Intro
-
 A J2EE project using **Springboot**, **Thymeleaf**, **Semantic UI** and **MySQL**.
-
-Demo: [project.homans.world](https://project.homans.world)
-
-服务器部署在 Google Cloud Platform 香港节点，加载速度视网络情况。
 
 
 
@@ -35,6 +29,7 @@ Demo: [project.homans.world](https://project.homans.world)
 6. Project Management
 
 ![img_5.png](assets/img_5.png)
+
 
 
 ## Features
@@ -105,6 +100,31 @@ Reference: <https://semantic-ui.com/introduction/build-tools.html>
 
 
 
+## Encrypted Properties
+
+Some properties in `application.yml` are encrypted and parsed by **Jasypt**.
+To run this project, you need to add `-Djasypt.encryptor.password` parameter
+in VM options for Jasypt to parse those secrets and start the application.
+
+```shell
+java -jar xxx.jar --jasypt.encryptor.password=masterPassword
+```
+
+Ask contributors for password, or replace those properties quoted with `ENC()`
+with your own database and certificate configuration in `application.yml`.
+You can you run the following command in project directory to encrypt your
+own property string.
+
+```shell
+mvn jasypt:encrypt-value \
+-Djasypt.encryptor.password="masterPassword" \
+-Djasypt.plugin.value="theValueYouWantToEncrypt"
+```
+
+Reference: <https://github.com/ulisesbocchio/jasypt-spring-boot>
+
+
+
 ## GitHub
 
 该项目在通过存储在 GitHub 仓库来与组员进行协作， commit 记录完整地记录了我们的项目开发过程。
@@ -113,7 +133,7 @@ Link: <https://github.com/homanw104/ProjectManagement>
 
 
 
-## Authors
+## Team Members
 
 * 王皜民：前端设计与搭建、后端数据库、服务器部署等全栈开发。
 * 苏建锐：项目需求分析、前端搭建、后端数据库对接、实验报告的撰写等。
@@ -123,17 +143,14 @@ Link: <https://github.com/homanw104/ProjectManagement>
 
 ## Licence
 
-This project is licenced under GPL-3.
+This project is licenced under GPL-3. \
+Date: Jan 2021
 
 
 
 ## Details
 
 关于更多技术细节，可以查看项目报告ヾ(•ω•`)o
-
-Crafted with dove by Homan & Temper.
-
-Date: Jan 2021
 
 
 

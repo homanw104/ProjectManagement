@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://data.homans.world:8809/project?characterEncoding=utf-8&useSSL=true
+    password: ENC(u1ETbKp77SgfqHHIxnSEhcAbN0clz2IzE3PFzV0VrjSzxqaNkNHbZGOitG4OYSqu)
+    username: ENC(bj1Xe5IP+OlM7YSDvCCpPimrPhYMjrNPIGPP8R2Gew0DI1xcdG9fM8ydts87FdOm)
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 200MB
+      max-request-size: 200MB
+  thymeleaf:
+    cache: false
+  mvc:
+    static-path-pattern: '**'
+  web:
+    resources:
+      static-locations: classpath:/static/
+
+server:
+  port: 8080
